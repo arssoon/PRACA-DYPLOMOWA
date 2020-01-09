@@ -7,6 +7,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
+import java.net.UnknownHostException;
+
 public class Main extends Application {
 
     @Override
@@ -17,10 +19,10 @@ public class Main extends Application {
             loader.setLocation(this.getClass().getResource("/resources/MainWindow.fxml"));
             StackPane stackPane = loader.load();
 
-            MainController controller = loader.getController();
-            loader.setController(controller);
+            MainController mainController = loader.getController();
+            loader.setController(mainController);
 
-            Scene scene = new Scene(stackPane, 1000, 400);
+            Scene scene = new Scene(stackPane, 1100, 1000);
 
             stage.setScene(scene);
             //set title for the stage
@@ -34,7 +36,7 @@ public class Main extends Application {
     }
 
     // Main Method
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
 
         launch(args);
     }

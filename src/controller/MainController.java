@@ -12,10 +12,12 @@ public class MainController {
     @FXML
     private StackPane mainStack;
 
-
     @FXML
-    public void initialize () {
+    public void initialize() {
+
         loadMenuWindow();
+
+
     }
 
     public void loadMenuWindow() {
@@ -23,7 +25,7 @@ public class MainController {
         Pane pane = null;
         try {
             pane = loader.load();
-        } catch ( IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -38,3 +40,4 @@ public class MainController {
     }
 
 }
+
