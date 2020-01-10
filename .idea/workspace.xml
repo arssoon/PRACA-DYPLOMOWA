@@ -1,14 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Created graphical design and capturing packets">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PracaDyplomowa.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/VisualisationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/MainWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added class CaptureTask">
+      <change afterPath="$PROJECT_DIR$/src/controller/AboutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/CaptureThread2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/HelpController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/AboutWindow.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/resources/HelpWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/MenuController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/VisualisationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/VisualisationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/fx/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/fx/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/MenuWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/MenuWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/VisualisationWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/VisualisationWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/CaptureTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CaptureTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/CaptureThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CaptureThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/VisualisationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisualisationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/fx/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/fx/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/MainWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Visualisation/Visualisation.iml" beforeDir="false" />
     </list>
     <list id="6fc8ccc1-27fe-4a3d-8190-b720b1d7c207" name="CapturePackets" comment="" />
     <ignored path="JavaFxApplication.iws" />
@@ -74,13 +90,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+            <state relative-caret-position="204">
+              <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#292#293#0" expanded="true" />
+                <element signature="e#328#329#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,8 +107,54 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="32" column="23" selection-end-line="85" />
+            <state relative-caret-position="326">
+              <caret line="87" selection-start-line="87" selection-end-line="87" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#588#589#0" expanded="true" />
+                <element signature="e#612#613#0" expanded="true" />
+                <element signature="e#2832#2833#0" expanded="true" />
+                <element signature="e#2862#2863#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/AboutController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#107#108#0" expanded="true" />
+                <element signature="e#137#138#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/HelpController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#197#198#0" expanded="true" />
+                <element signature="e#221#222#0" expanded="true" />
+                <element signature="e#383#384#0" expanded="true" />
+                <element signature="e#413#414#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/CaptureThread.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,56 +165,14 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="119">
+              <caret line="137" selection-start-line="137" selection-end-line="137" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#686#694#0" expanded="true" />
                 <element signature="e#863#864#0" expanded="true" />
                 <element signature="e#913#914#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/CaptureThread.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/CaptureTask.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="376">
-              <caret line="74" selection-start-line="74" selection-end-line="74" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/resources/MainWindow.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../Main/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -160,8 +182,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -169,6 +191,7 @@
     <findStrings>
       <find>stage</find>
       <find>device opened</find>
+      <find>backToMenu</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -198,21 +221,25 @@
         <option value="$PROJECT_DIR$/src/resources/StackPaneWindow.fxml" />
         <option value="$PROJECT_DIR$/src/controller/StackPaneController.java" />
         <option value="$PROJECT_DIR$/src/controller/WifxiInfo.java" />
-        <option value="$PROJECT_DIR$/src/fx/Main.java" />
-        <option value="$PROJECT_DIR$/src/resources/MenuWindow.fxml" />
         <option value="$PROJECT_DIR$/src/fx/NetworkDevices.java" />
         <option value="$PROJECT_DIR$/src/fx/NetworkInterfaces.java" />
         <option value="$PROJECT_DIR$/src/controller/PacketCapture.java" />
-        <option value="$PROJECT_DIR$/src/controller/MenuController.java" />
         <option value="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/controller/CaptureThread2.java" />
         <option value="$PROJECT_DIR$/src/controller/CaptureService.java" />
-        <option value="$PROJECT_DIR$/src/controller/CaptureThread.java" />
+        <option value="$PROJECT_DIR$/../Main/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/controller/CaptureThread2.java" />
         <option value="$PROJECT_DIR$/src/controller/VisualisationController.java" />
+        <option value="$PROJECT_DIR$/src/controller/CaptureThread.java" />
         <option value="$PROJECT_DIR$/src/controller/CaptureTask.java" />
         <option value="$PROJECT_DIR$/src/resources/MainWindow.fxml" />
-        <option value="$PROJECT_DIR$/../Main/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/resources/MenuWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/HelpWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/resources/AboutWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/controller/HelpController.java" />
+        <option value="$PROJECT_DIR$/src/fx/Main.java" />
         <option value="$PROJECT_DIR$/src/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/src/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/controller/AboutController.java" />
       </list>
     </option>
   </component>
@@ -232,6 +259,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -270,8 +299,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,7 +477,8 @@
       <workItem from="1578573752303" duration="2598000" />
       <workItem from="1578577301642" duration="2450000" />
       <workItem from="1578580168103" duration="7101000" />
-      <workItem from="1578590984099" duration="2864000" />
+      <workItem from="1578590984099" duration="8716000" />
+      <workItem from="1578650232739" duration="30661000" />
     </task>
     <task id="LOCAL-00001" summary="Created graphical design and capturing packets">
       <created>1578593820100</created>
@@ -459,11 +487,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578593820100</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added class CaptureTask">
+      <created>1578594088420</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1578594088420</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142757000" />
+    <option name="totallyTimeSpent" value="179270000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -478,7 +513,7 @@
     <frame x="-7" y="23" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2536913" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.25704697" />
       <window_info id="Structure" order="1" weight="0.24966443" />
       <window_info id="Favorites" order="2" weight="0.3295302" />
       <window_info id="Designer" order="3" />
@@ -487,7 +522,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3603352" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26396647" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.23463687" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -498,7 +533,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Messages" order="13" visible="true" weight="0.32960895" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32960895" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Terminal" order="16" weight="0.32850242" />
@@ -524,7 +559,8 @@
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <MESSAGE value="Created graphical design and capturing packets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created graphical design and capturing packets" />
+    <MESSAGE value="Added class CaptureTask" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added class CaptureTask" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
@@ -561,28 +597,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/MenuWindow.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/NetworkInterfaces.java" />
     <entry file="file://$PROJECT_DIR$/src/resources/VisualisationWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="62" column="139" selection-start-line="62" selection-start-column="139" selection-end-line="62" selection-end-column="139" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/PacketCapture.java" />
-    <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/CaptureService.java" />
+    <entry file="file://$PROJECT_DIR$/../Main/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="32" column="23" selection-end-line="85" />
+        <state relative-caret-position="204">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CaptureThread2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="110" lean-forward="true" selection-end-line="110" />
+          <folding>
+            <element signature="e#0#4035#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/ext/jfxrt.jar!/javafx/concurrent/Task.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="343" column="19" selection-start-line="343" selection-start-column="19" selection-end-line="343" selection-end-column="19" />
+          <folding>
+            <element signature="e#10855#10856#0" expanded="true" />
+            <element signature="e#10918#10919#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/rt.jar!/java/lang/Runnable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CaptureTask.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="99" selection-start-line="99" selection-end-line="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/HelpWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="15" lean-forward="true" selection-start-line="16" selection-start-column="15" selection-end-line="16" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/CaptureThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="21" column="8" lean-forward="true" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -591,62 +673,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        <state relative-caret-position="119">
+          <caret line="137" selection-start-line="137" selection-end-line="137" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#686#694#0" expanded="true" />
             <element signature="e#863#864#0" expanded="true" />
             <element signature="e#913#914#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CaptureService.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/rt.jar!/java/util/List.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="42" column="35" selection-end-line="51" />
+        <state relative-caret-position="167">
+          <caret line="69" column="6" selection-start-line="69" selection-start-column="6" selection-end-line="69" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CaptureTask.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/MenuWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="74" selection-start-line="74" selection-end-line="74" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="-14">
+          <caret line="17" column="21" lean-forward="true" selection-start-line="17" selection-start-column="21" selection-end-line="17" selection-end-column="21" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/MainWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="119">
+          <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/AboutWindow.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="21" column="110" selection-start-line="21" selection-start-column="100" selection-end-line="21" selection-end-column="110" />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/fx/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Main/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="21" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/CaptureThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="42" column="32" selection-start-line="42" selection-start-column="32" selection-end-line="42" selection-end-column="32" />
+        <state relative-caret-position="445">
+          <caret line="51" column="1" lean-forward="true" selection-start-line="51" selection-start-column="1" selection-end-line="51" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -655,10 +727,52 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="23" column="11" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        <state relative-caret-position="204">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#292#293#0" expanded="true" />
+            <element signature="e#328#329#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/HelpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="8" column="9" lean-forward="true" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#383#384#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="87" selection-start-line="87" selection-end-line="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#612#613#0" expanded="true" />
+            <element signature="e#2832#2833#0" expanded="true" />
+            <element signature="e#2862#2863#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/AboutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#107#108#0" expanded="true" />
+            <element signature="e#137#138#0" expanded="true" />
           </folding>
         </state>
       </provider>

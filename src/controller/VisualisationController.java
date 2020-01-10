@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import org.jnetpcap.Pcap;
+import org.jnetpcap.PcapAddr;
 import org.jnetpcap.PcapIf;
 
 import javax.swing.*;
@@ -120,16 +122,21 @@ public class VisualisationController extends Component {
     //------------------------------------------------------------------------------------------------------------------
     public void ClickedNetworkDevices() throws IOException {
         number = ListNetworkInterfaces2();
+        List<PcapAddr> INT = interfaceDevice.get(number).getAddresses();
+
         textAreaOutput.appendText("\n------------------------------------------------------- " +
                 "\nWybrano urządzenie " + number +
                 "\nNazwa : " + interfaceDevice.get(number).getName() +
-                "\nID : " + interfaceDevice.get(number).getDescription()
+                "\nID : " + interfaceDevice.get(number).getDescription()+
+                "\nIP Address: " + INT.get(0).getAddr()+
+                "\nBroadcast Address: " + INT.get(0).getNetmask()
         );
     }
 
     //------------------------------------------------------------------------------------------------------------------
     public void StartCapturePacket() throws IOException {
         textAreaShow.setText(" ");
+        ClickedNetworkDevices();
         number = ListNetworkInterfaces2();
         running.set(true);
         try {
@@ -137,22 +144,20 @@ public class VisualisationController extends Component {
                     interfaceDevice, errbuf, number, this);
 
             threadCapture.setDaemon(true);
-            threadCapture.start();
-            try {
-                threadCapture.sleep(1);
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            Platform.runLater ( () ->threadCapture.start());
 
-        } catch (Exception e) {
-            textAreaOutput.appendText("Exceptions:\n" + e.getMessage());
+        } catch (Exception ex) {
+            System.out.println("Wyjątek w klasie : " + this.getClass()+ "\n i metodzie "+ this.getName() +
+                    ". \nInformacja dla admina: \n" + ex.getMessage());
+            textAreaOutput.appendText("Exceptions:\n" + ex.getMessage());
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------
     public void StopCapturePacket() {
         running.set(false);
-        textAreaShow.appendText("\nZatrzynano przechwytywanie");
+//        threadCapture.interrupt();
+        textAreaOutput.appendText("\nZatrzynano przechwytywanie");
         System.out.println("\nZatrzynano przechwytywanie");
 
         // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA

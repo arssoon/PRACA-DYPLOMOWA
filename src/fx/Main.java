@@ -6,8 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
-import java.net.UnknownHostException;
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -15,18 +16,14 @@ public class Main extends Application {
     public void start(Stage stage) {
 
         try {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(this.getClass().getResource("/resources/MainWindow.fxml"));
-            StackPane stackPane = loader.load();
-
-            MainController mainController = loader.getController();
-            loader.setController(mainController);
-
-            Scene scene = new Scene(stackPane, 1100, 1000);
+            Scene scene;
+            scene = getScene();
 
             stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+
             //set title for the stage
-            stage.setTitle("VISUALISATION ISO/OSI");
+            stage.setTitle("CAPTURING PACKETS");
             stage.show();
         }
         catch (Exception e) {
@@ -36,8 +33,20 @@ public class Main extends Application {
     }
 
     // Main Method
-    public static void main(String[] args) throws UnknownHostException {
+    public static void main(String[] args) {
 
         launch(args);
+    }
+
+    public Scene getScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/MainWindow.fxml"));
+        StackPane stackPane = loader.load();
+
+        MainController mainController = loader.getController();
+        loader.setController(mainController);
+
+        Scene scene = new Scene(stackPane, 1000, 800);
+
+        return scene;
     }
 }

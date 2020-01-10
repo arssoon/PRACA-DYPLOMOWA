@@ -10,19 +10,16 @@ import java.io.IOException;
 public class MainController {
 
     @FXML
-    private StackPane mainStack;
+    public StackPane mainStack;
 
     @FXML
     public void initialize() {
-
         loadMenuWindow();
-
-
     }
 
     public void loadMenuWindow() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/MenuWindow.fxml"));
-        Pane pane = null;
+        Pane pane = new Pane();
         try {
             pane = loader.load();
         } catch (IOException e) {
