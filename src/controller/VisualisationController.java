@@ -3,10 +3,12 @@ package controller;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapAddr;
 import org.jnetpcap.PcapIf;
@@ -33,15 +35,19 @@ public class VisualisationController extends Component {
         running = new AtomicBoolean(false);
     }
 
+
+    @FXML
+    private MainController mainController;
+
     // List network devices
     @FXML
-    private ChoiceBox networkDevicesBox;
+    private ComboBox devicesComboBox;
 
     @FXML
     private TextArea textAreaOutput;
 
     @FXML
-    private TextArea textAreaShow;
+    private TextArea textAreaInfo;
 
     @FXML
     private Button listNetworkDevices;
@@ -51,6 +57,9 @@ public class VisualisationController extends Component {
 
     @FXML
     private Button stopCaptureButton;
+
+    @FXML
+    private Button backButton;
 
     //------------------------------------------------------------------------------------------------------------------
     private String getNameDevices(int number) {
@@ -65,7 +74,6 @@ public class VisualisationController extends Component {
     // zaladowanie do ChoiceBox'a urzadzen sieciowych
     private void loadNameDevices() {
         networkName = FXCollections.observableArrayList(
-                "\t\tWybierz urządzenie do przechwytywania...",
                 getNameDevices(0),
                 getNameDevices(1),
                 getNameDevices(2),
@@ -76,7 +84,7 @@ public class VisualisationController extends Component {
                 getNameDevices(7)
         );
 
-        networkDevicesBox.setItems(networkName);
+        devicesComboBox.setItems(networkName);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -87,10 +95,9 @@ public class VisualisationController extends Component {
         }
 
         for (int i = 0; i <= number; i++) {
-            textAreaShow.appendText("\n#" + i + "_Nazwa urzadzenia: " + interfaceDevice.get(i).getName() + " >>>> " +
+            textAreaOutput.appendText("\n#" + i + "_Nazwa urzadzenia: " + interfaceDevice.get(i).getName() + " >>>> " +
                     interfaceDevice.get(i).getDescription());
         }
-
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -103,7 +110,7 @@ public class VisualisationController extends Component {
 //            textAreaShow.appendText("\n#" + i + "_Nazwa urzadzenia: " + interfaceDevice.get(i).getName() + "\t" + interfaceDevice.get(i).getDescription());
 //
 //        }
-        String myString = networkDevicesBox.getValue().toString();
+        String myString = devicesComboBox.getValue().toString();
 
         // wyodrębnienie z nazwy numeru jaki uzytkownik wybral w polu ChoiceBox
         Pattern p = Pattern.compile("\\d");
@@ -120,45 +127,54 @@ public class VisualisationController extends Component {
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    public void ClickedNetworkDevices() throws IOException {
+    public void chooseNetworkDevice(ActionEvent actionEvent) throws IOException {
+        //TODO wyrzuca błąd przy loopbacku i innych urzadzeniach
         number = ListNetworkInterfaces2();
         List<PcapAddr> INT = interfaceDevice.get(number).getAddresses();
-
         textAreaOutput.appendText("\n------------------------------------------------------- " +
                 "\nWybrano urządzenie " + number +
                 "\nNazwa : " + interfaceDevice.get(number).getName() +
-                "\nID : " + interfaceDevice.get(number).getDescription()+
-                "\nIP Address: " + INT.get(0).getAddr()+
+                "\nID : " + interfaceDevice.get(number).getDescription() +
+                "\nIP Address: " + INT.get(0).getAddr() +
                 "\nBroadcast Address: " + INT.get(0).getNetmask()
         );
     }
 
     //------------------------------------------------------------------------------------------------------------------
     public void StartCapturePacket() throws IOException {
-        textAreaShow.setText(" ");
-        ClickedNetworkDevices();
+        textAreaOutput.setText(" ");
+        startCaptureButton.setDisable(true);
+        listNetworkDevices.setDisable(true);
+        startCaptureButton.setText("CAPTURING...");
+        stopCaptureButton.setVisible(true);
+        stopCaptureButton.setDisable(false);
         number = ListNetworkInterfaces2();
         running.set(true);
         try {
-            threadCapture = new CaptureThread(textAreaOutput, textAreaShow,
+            threadCapture = new CaptureThread(textAreaOutput, textAreaInfo,
                     interfaceDevice, errbuf, number, this);
 
             threadCapture.setDaemon(true);
-            Platform.runLater ( () ->threadCapture.start());
+            Platform.runLater(() -> threadCapture.start());
 
         } catch (Exception ex) {
-            System.out.println("Wyjątek w klasie : " + this.getClass()+ "\n i metodzie "+ this.getName() +
+            System.out.println("Wyjątek w klasie : " + this.getClass() + "\n i metodzie " + this.getName() +
                     ". \nInformacja dla admina: \n" + ex.getMessage());
-            textAreaOutput.appendText("Exceptions:\n" + ex.getMessage());
+            textAreaInfo.setText("Exceptions:\n" + ex.getMessage());
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------
     public void StopCapturePacket() {
         running.set(false);
-//        threadCapture.interrupt();
-        textAreaOutput.appendText("\nZatrzynano przechwytywanie");
+        startCaptureButton.setDisable(false);
+        stopCaptureButton.setDisable(true);
+        startCaptureButton.setText("START");
+        listNetworkDevices.setDisable(false);
+
+        textAreaInfo.appendText("\n>>> Zatrzynano przechwytywanie");
         System.out.println("\nZatrzynano przechwytywanie");
+
 
         // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
         JOptionPane.showMessageDialog(this, "Zatrzymano przechwytywanie pakietów", "INFORMATION MESSAGE", JOptionPane.WARNING_MESSAGE);
@@ -167,10 +183,26 @@ public class VisualisationController extends Component {
 
     @FXML
     private void initialize() {
-        textAreaOutput.appendText("Witam!\nProszę wybrać urządzenie z listy, aby rozpocząć przechwytywanie pakietów.");
+        textAreaInfo.appendText( "Witam!\nProszę wybrać urządzenie z listy, aby rozpocząć przechwytywanie pakietów.\n");
         loadNameDevices();
-        networkDevicesBox.getSelectionModel().selectFirst();
+        stopCaptureButton.setVisible(false);
 
+    }
+
+    // label (X) - zamknięcie całej aplikacji
+    @FXML
+    public void handleClose(MouseEvent dragEvent) {
+        System.exit(0);
+    }
+
+    // button - powrót do menu
+    @FXML
+    public void backToMenu(ActionEvent actionEvent) {
+        mainController.loadMenuWindow();
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 
 }

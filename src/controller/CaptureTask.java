@@ -18,17 +18,18 @@ class CaptureTask extends Task  {
     List<PcapIf> interfaceDevice;
     VisualisationController visualisationController;
     CaptureThread captureThread;
+    LocalTime localTime = LocalTime.now();
 
     @FXML
     private TextArea textAreaOutput;
 
     @FXML
-    private TextArea textAreaShow;
+    private TextArea textAreaInfo;
 
     int number;
 
     public CaptureTask(TextArea textAreaOutput,
-                       TextArea textAreaShow,
+                        TextArea textAreaInfo,
                        List<PcapIf> interfaceDevice,
                        StringBuilder errbuf,
                        int number,
@@ -36,7 +37,7 @@ class CaptureTask extends Task  {
                        CaptureThread captureThread
     ) {
         this.textAreaOutput = textAreaOutput;
-        this.textAreaShow = textAreaShow;
+        this.textAreaInfo = textAreaInfo;
         this.errbuf = errbuf;
         this.interfaceDevice = interfaceDevice;
         this.number = number;
@@ -46,8 +47,7 @@ class CaptureTask extends Task  {
     }
     @Override public Void call() {
 
-        LocalTime localTime = LocalTime.now();
-        textAreaOutput.appendText("\n\nStarting of capture packet...\n");
+        textAreaInfo.appendText("\n\n>>> Start capturing...\n");
         try {
             int snaplen = 64 * 1024;           // Capture all packets, no trucation
             int flags = Pcap.MODE_PROMISCUOUS; // capture all packets
@@ -67,7 +67,7 @@ class CaptureTask extends Task  {
             }
 
             System.out.println("device opened");
-            textAreaOutput.appendText("device opened");
+            textAreaInfo.appendText("\ndevice opened\n");
 
             //Create packet handler which will receive packets
             PcapPacketHandler jpacketHandler = new PcapPacketHandler() {
@@ -77,7 +77,7 @@ class CaptureTask extends Task  {
                 @Override
                 public void nextPacket(PcapPacket packet, Object t) {
                     if (packet.hasHeader(tcp)) {
-                        textAreaShow.appendText("\n--------------------------------------------------------------------------------\n" +
+                        textAreaOutput.appendText("\n--------------------------------------------------------------------------------\n" +
                                 " " + localTime.getHour() + ":" + localTime.getMinute()+ ":" +localTime.getSecond() +
                                 " >>>> Packet TCP " + tcp.getPacket().getFrameNumber() +
                                 "\n--------------------------------------------------------------------------------" +
@@ -90,16 +90,16 @@ class CaptureTask extends Task  {
                 }
 
             };
+
             //we enter the loop and capture the 10 packets here.You can  capture any number of packets just by changing the first
             // argument to pcap.loop() function below
-
             while (visualisationController.running.get()) {
-                    pcap.loop(100, jpacketHandler, "jnetpcap rocks!");
+                    pcap.loop(20, jpacketHandler, "jnetpcap rocks!");
 
                     pcap.close();
 
-                    System.out.println("\nDevice closed");
-                    textAreaOutput.appendText("\nDevice closed");
+                    System.out.println("\nDevice closed\n");
+                    textAreaInfo.appendText("\nDevice closed\n");
             }
         } catch (Exception ex) {
             System.out.println("Wyjątek w klasie : " + this.getClass()+ "\n i miejscu "+ this.getTitle() +

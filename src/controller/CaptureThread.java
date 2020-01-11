@@ -17,31 +17,30 @@ public class CaptureThread extends Thread {
     private TextArea textAreaOutput;
 
     @FXML
-    private TextArea textAreaShow;
+    private TextArea textAreaInfo;
 
     int number;
 
     public CaptureThread(TextArea textAreaOutput,
-                         TextArea textAreaShow,
+                         TextArea textAreaInfo,
                          List<PcapIf> interfaceDevice,
                          StringBuilder errbuf,
                          int number,
                          VisualisationController visualisationController) {
         this.textAreaOutput = textAreaOutput;
-        this.textAreaShow = textAreaShow;
         this.errbuf = errbuf;
         this.interfaceDevice = interfaceDevice;
         this.number = number;
+        this.textAreaInfo = textAreaInfo;
 
         this.visualisationController = visualisationController;
     }
 
     public void run() {
-        CaptureTask captureTask = new CaptureTask(textAreaOutput, textAreaShow,
+        CaptureTask captureTask = new CaptureTask(textAreaOutput, textAreaInfo,
                 interfaceDevice, errbuf, number, visualisationController, this);
 
         Platform.runLater(() -> captureTask.run());
-
 
 //        ProgressBar bar = new ProgressBar();
 //        bar.progressProperty().bind(captureTask.progressProperty());
@@ -55,24 +54,5 @@ public class CaptureThread extends Thread {
                         ". \nInformacja dla admina: \n" + ex.getMessage());
             }
         }
-
-
-
-
-//        CaptureThread2 captureThread2 = new CaptureThread2(textAreaOutput, textAreaShow,
-//                interfaceDevice, errbuf, number, visualisationController, this);
-//
-//        //platform.runLater
-//        Platform.runLater(() -> captureThread2.setDaemon(true));
-//        Platform.runLater(() -> captureThread2.start());
-//
-//
-//        while (visualisationController.running.get()) {
-//            try {
-//                this.sleep(1);
-//            } catch (Exception ex) {
-//                System.out.println(ex.getMessage());
-//            }
-//        }
     }
 }

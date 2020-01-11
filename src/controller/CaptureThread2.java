@@ -47,7 +47,7 @@
 //
 //
 //        LocalTime localTime = LocalTime.now();
-//        textAreaOutput.appendText("\n\nStarting of capture packet...\n");
+//        textAreaOutput.appendText("\n\nStart capturing...\n");
 //        try {
 //            int snaplen = 64 * 1024;           // Capture all packets, no trucation
 //            int flags = Pcap.MODE_PROMISCUOUS; // capture all packets
@@ -95,7 +95,7 @@
 //            // argument to pcap.loop() function below
 //
 //            while (visualisationController.running.get()) {
-//                pcap.loop(-1, jpacketHandler, "jnetpcap rocks!");
+//                pcap.loop(100, jpacketHandler, "jnetpcap rocks!");
 //
 //                pcap.close();
 //                System.out.println("\nDevice closed");

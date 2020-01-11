@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HelpController">
    <children>
@@ -13,10 +13,15 @@
             <Label fx:id="helpLabel" text="Label" textFill="WHITE" />
          </children>
       </StackPane>
-      <Label fx:id="closeLabelHelp" layoutX="954.0" layoutY="7.0" onMouseClicked="#handleClose" prefHeight="62.0" prefWidth="25.0" text="X" textFill="#b23131">
+      <Label fx:id="closeLabelHelp" layoutX="962.0" layoutY="14.0" onMouseClicked="#handleClose" prefHeight="9.0" prefWidth="3.0" text="X" textFill="#b23131">
          <font>
-            <Font size="42.0" />
+            <Font name="System Bold" size="29.0" />
          </font>
       </Label>
+      <Button fx:id="backButton" layoutX="817.0" layoutY="714.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: #E45652;" text="BACK" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

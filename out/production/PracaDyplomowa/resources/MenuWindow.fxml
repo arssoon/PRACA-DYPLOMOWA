@@ -11,7 +11,7 @@
    <children>
       <AnchorPane layoutX="523.0" layoutY="100.0" prefHeight="600.0" prefWidth="457.0" style="-fx-background-color: #9C2C20;">
          <children>
-            <Button fx:id="startButton" layoutX="29.0" layoutY="163.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="70.0" prefWidth="400.0" style="-fx-background-color: #E45652;" text="START" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="startButton" layoutX="29.0" layoutY="163.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="70.0" prefWidth="400.0" style="-fx-background-color: #E45652;" text="START" textAlignment="CENTER" textFill="WHITE" AnchorPane.rightAnchor="28.0">
                <font>
                   <Font name="Times New Roman Bold" size="38.0" />
                </font>
@@ -43,11 +43,6 @@
             <Image url="@../images/background.jpg" />
          </image>
       </ImageView>
-      <Label fx:id="closeLabel" layoutX="961.0" onMouseClicked="#handleClose" prefHeight="62.0" prefWidth="25.0" text="X" textFill="#b23131">
-         <font>
-            <Font size="42.0" />
-         </font>
-      </Label>
       <Label layoutX="77.0" layoutY="240.0" prefHeight="208.0" prefWidth="387.0" text="Welcome of a System for Visualizing Data" textFill="WHITE" wrapText="true">
          <font>
             <Font size="38.0" />
@@ -58,5 +53,10 @@
             <Font name="System Bold" size="17.0" />
          </font>
       </Button>
+      <Label fx:id="closeLabel" layoutX="962.0" layoutY="14.0" onMouseClicked="#handleClose" prefHeight="8.0" prefWidth="7.0" text="X" textFill="#b53131">
+         <font>
+            <Font name="System Bold" size="29.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

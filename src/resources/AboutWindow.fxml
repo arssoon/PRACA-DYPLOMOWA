@@ -6,20 +6,19 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutController">
    <children>
       <StackPane layoutX="200.0" layoutY="200.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
          <children>
-            <Label fx:id="aboutLabel" text="Label" textFill="WHITE" />
+            <Label fx:id="aboutLabel" prefHeight="207.0" prefWidth="528.0" text="This application was written by Arkadiusz Sobol. It is forbidden to spread this application on the internet and copy it." textFill="WHITE" wrapText="true" />
          </children>
       </StackPane>
-      <Label fx:id="closeLabel" layoutX="954.0" layoutY="7.0" onMouseClicked="#handleClose" prefHeight="62.0" prefWidth="25.0" text="X" textFill="#b23131">
+      <Label fx:id="closeLabel" layoutX="962.0" layoutY="14.0" onMouseClicked="#handleClose" prefHeight="0.0" prefWidth="0.0" text="X" textFill="#b23131">
          <font>
-            <Font size="42.0" />
+            <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="807.0" layoutY="704.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: #E45652;" text="Back to MENU" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="807.0" layoutY="704.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: #E45652;" text="BACK" textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>
