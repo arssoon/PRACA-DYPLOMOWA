@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="pcap4j-core-1.7.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-core-1.7.3.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-core-2.0.0-alpha.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-sample-2.0.0-alpha.6.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/slf4j-api-1.7.25.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/slf4j-api-1.7.26.jar!/" />
+      <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/slf4j-nop-1.7.25.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

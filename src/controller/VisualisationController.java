@@ -1,6 +1,6 @@
 package controller;
 
-import javafx.application.Platform;
+import controller.Threads.CaptureThread;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapAddr;
 import org.jnetpcap.PcapIf;
+import org.pcap4j.core.PcapNetworkInterface;
 
 import javax.swing.*;
 import java.awt.*;
@@ -28,13 +29,14 @@ public class VisualisationController extends Component {
     List<PcapIf> interfaceDevice = new ArrayList<PcapIf>();
     ObservableList<String> networkName;
     CaptureThread threadCapture;
+
+    PcapNetworkInterface device;
     int number = 0;
     public AtomicBoolean running;
 
     public VisualisationController() {
         running = new AtomicBoolean(false);
     }
-
 
     @FXML
     private MainController mainController;
@@ -131,6 +133,7 @@ public class VisualisationController extends Component {
         //TODO wyrzuca błąd przy loopbacku i innych urzadzeniach
         number = ListNetworkInterfaces2();
         List<PcapAddr> INT = interfaceDevice.get(number).getAddresses();
+
         textAreaOutput.appendText("\n------------------------------------------------------- " +
                 "\nWybrano urządzenie " + number +
                 "\nNazwa : " + interfaceDevice.get(number).getName() +
@@ -139,28 +142,29 @@ public class VisualisationController extends Component {
                 "\nBroadcast Address: " + INT.get(0).getNetmask()
         );
     }
-
     //------------------------------------------------------------------------------------------------------------------
     public void StartCapturePacket() throws IOException {
-        textAreaOutput.setText(" ");
-        startCaptureButton.setDisable(true);
-        listNetworkDevices.setDisable(true);
-        startCaptureButton.setText("CAPTURING...");
-        stopCaptureButton.setVisible(true);
-        stopCaptureButton.setDisable(false);
-        number = ListNetworkInterfaces2();
-        running.set(true);
-        try {
-            threadCapture = new CaptureThread(textAreaOutput, textAreaInfo,
+        if(number == 7) {
+            // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
+            JOptionPane.showMessageDialog(this, "Please, select your network devices.", "INFORMATION MESSAGE", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            textAreaOutput.setText(" ");
+            startCaptureButton.setDisable(true);
+            listNetworkDevices.setDisable(true);
+            startCaptureButton.setText("CAPTURING...");
+            stopCaptureButton.setVisible(true);
+            stopCaptureButton.setDisable(false);
+            number = ListNetworkInterfaces2();
+            running.set(true);
+
+            CaptureThread captureThread = new CaptureThread(textAreaOutput, textAreaInfo,
                     interfaceDevice, errbuf, number, this);
+            captureThread.run();
 
-            threadCapture.setDaemon(true);
-            Platform.runLater(() -> threadCapture.start());
-
-        } catch (Exception ex) {
-            System.out.println("Wyjątek w klasie : " + this.getClass() + "\n i metodzie " + this.getName() +
-                    ". \nInformacja dla admina: \n" + ex.getMessage());
-            textAreaInfo.setText("Exceptions:\n" + ex.getMessage());
+//            MainSnifferController main = new MainSnifferController(textAreaOutput, textAreaInfo,
+//                    interfaceDevice, errbuf, number, this);
+//            main.showTrans();
         }
     }
 
@@ -187,6 +191,7 @@ public class VisualisationController extends Component {
         loadNameDevices();
         stopCaptureButton.setVisible(false);
 
+
     }
 
     // label (X) - zamknięcie całej aplikacji
@@ -204,6 +209,7 @@ public class VisualisationController extends Component {
     public void setMainController(MainController mainController) {
         this.mainController = mainController;
     }
+
 
 }
 

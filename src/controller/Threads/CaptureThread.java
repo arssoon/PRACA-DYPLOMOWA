@@ -1,13 +1,13 @@
-package controller;
+package controller.Threads;
 
-import javafx.application.Platform;
+import controller.VisualisationController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import org.jnetpcap.PcapIf;
 
 import java.util.List;
 
-public class CaptureThread extends Thread {
+public class CaptureThread implements Runnable {
 
     StringBuilder errbuf;
     List<PcapIf> interfaceDevice;
@@ -40,19 +40,12 @@ public class CaptureThread extends Thread {
         CaptureTask captureTask = new CaptureTask(textAreaOutput, textAreaInfo,
                 interfaceDevice, errbuf, number, visualisationController, this);
 
-        Platform.runLater(() -> captureTask.run());
+        captureTask.run();
 
-//        ProgressBar bar = new ProgressBar();
-//        bar.progressProperty().bind(captureTask.progressProperty());
-//        new Thread(captureTask).start();
-
-        while (visualisationController.running.get()) {
-            try {
-                this.sleep(1);
-            } catch (Exception ex) {
-                System.out.println("Wyjątek w klasie : " + this.getClass()+ "\n i metodzie "+ this.getName() +
-                        ". \nInformacja dla admina: \n" + ex.getMessage());
-            }
-        }
+//        CaptureThread2 captureTask = new CaptureThread2(textAreaOutput, textAreaInfo,
+//                interfaceDevice, errbuf, number, visualisationController, this);
+//
+//        captureTask.setDaemon(true);
+//        Platform.runLater(() -> captureTask.start());
     }
 }

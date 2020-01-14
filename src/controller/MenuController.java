@@ -35,6 +35,8 @@ public class MenuController {
             e.printStackTrace();
         }
 
+        VisualisationController visualisationController = loader.getController();
+        visualisationController.setMainController(mainController);
         mainController.setWindow(pane);
     }
 
@@ -51,8 +53,9 @@ public class MenuController {
             e.printStackTrace();
         }
 
-        mainController.mainStack.getChildren().clear();
-        mainController.mainStack.getChildren().add(pane);
+        HelpController helpController = loader.getController();
+        helpController.setMainController(mainController);
+        mainController.setWindow(pane);
     }
 
     // Menu -> ABOUT
@@ -67,6 +70,8 @@ public class MenuController {
             e.printStackTrace();
         }
 
+        AboutController aboutController = loader.getController();
+        aboutController.setMainController(mainController);
         mainController.setWindow(pane);
     }
 
