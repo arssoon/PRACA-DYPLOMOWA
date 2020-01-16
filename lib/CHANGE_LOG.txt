@@ -49,7 +49,7 @@
 * Added
 
 	- Added a new  management class named DisposableGC which runs in 
-	               a background system thread and schedules native memory 
+	               a background system threads and schedules native memory
 	               cleanup. 
 	               
 	- Added several system properties (nio.mx, nio.ms, nio.blocksize) which 

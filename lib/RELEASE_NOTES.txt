@@ -38,8 +38,8 @@ perform any type of cleanup. Any class requiring cleanup, now uses the
 java.lang.reference package mechanism to be notified when cleanup needs to 
 occur. This is Sun/Oracle recommended way of performing cleanup.
 
-Beta 4 adds a background system thread which schedules cleanup of resources. The
-cleanup thread, named after the class implementing most of the functionality,
+Beta 4 adds a background system threads which schedules cleanup of resources. The
+cleanup threads, named after the class implementing most of the functionality,
 DisposableGC class, works in conjunction with memory allocation mechanism to
 ensure that memory is kept within default limits of 64mb. 
 

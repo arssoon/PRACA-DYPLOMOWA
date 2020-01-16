@@ -1,8 +1,10 @@
 package controller.Threads;
 
 import controller.VisualisationController;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import org.jnetpcap.PcapIf;
 
 import java.util.List;
@@ -17,17 +19,22 @@ public class CaptureThread implements Runnable {
     private TextArea textAreaOutput;
 
     @FXML
+    private TextField amountPacket;
+
+    @FXML
     private TextArea textAreaInfo;
 
     int number;
 
     public CaptureThread(TextArea textAreaOutput,
                          TextArea textAreaInfo,
+                         TextField amountPacket,
                          List<PcapIf> interfaceDevice,
                          StringBuilder errbuf,
                          int number,
                          VisualisationController visualisationController) {
         this.textAreaOutput = textAreaOutput;
+        this.amountPacket = amountPacket;
         this.errbuf = errbuf;
         this.interfaceDevice = interfaceDevice;
         this.number = number;
@@ -37,10 +44,10 @@ public class CaptureThread implements Runnable {
     }
 
     public void run() {
-        CaptureTask captureTask = new CaptureTask(textAreaOutput, textAreaInfo,
+        CaptureTask captureTask = new CaptureTask(textAreaOutput, textAreaInfo, amountPacket,
                 interfaceDevice, errbuf, number, visualisationController, this);
 
-        captureTask.run();
+        Platform.runLater(() -> captureTask.run());
 
 //        CaptureThread2 captureTask = new CaptureThread2(textAreaOutput, textAreaInfo,
 //                interfaceDevice, errbuf, number, visualisationController, this);
@@ -48,4 +55,5 @@ public class CaptureThread implements Runnable {
 //        captureTask.setDaemon(true);
 //        Platform.runLater(() -> captureTask.start());
     }
+
 }

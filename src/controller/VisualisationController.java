@@ -1,22 +1,23 @@
 package controller;
 
-import controller.Threads.CaptureThread;
+import controller.Threads.Threads;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapAddr;
 import org.jnetpcap.PcapIf;
-import org.pcap4j.core.PcapNetworkInterface;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -28,14 +29,15 @@ public class VisualisationController extends Component {
     StringBuilder errbuf = new StringBuilder();
     List<PcapIf> interfaceDevice = new ArrayList<PcapIf>();
     ObservableList<String> networkName;
-    CaptureThread threadCapture;
-
-    PcapNetworkInterface device;
+    Thread thread;
+    Task task;
     int number = 0;
     public AtomicBoolean running;
 
     public VisualisationController() {
         running = new AtomicBoolean(false);
+        PacketRec packetRec = new PacketRec(textAreaOutput, this);
+
     }
 
     @FXML
@@ -46,13 +48,17 @@ public class VisualisationController extends Component {
     private ComboBox devicesComboBox;
 
     @FXML
-    private TextArea textAreaOutput;
+    public TextArea textAreaOutput;
 
     @FXML
     private TextArea textAreaInfo;
 
     @FXML
+    private TextField amountPacket;
+
+    @FXML
     private Button listNetworkDevices;
+    //-------------------------------------
     // Start & stop
     @FXML
     private Button startCaptureButton;
@@ -142,52 +148,61 @@ public class VisualisationController extends Component {
                 "\nBroadcast Address: " + INT.get(0).getNetmask()
         );
     }
+
     //------------------------------------------------------------------------------------------------------------------
-    public void StartCapturePacket() throws IOException {
-        if(number == 7) {
-            // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
-            JOptionPane.showMessageDialog(this, "Please, select your network devices.", "INFORMATION MESSAGE", JOptionPane.WARNING_MESSAGE);
+    public synchronized void StartCapturePacket() throws IOException {
+        if (number == 7) {
+            // INFORMACJA O NIE WYBRANIU DEVICE NETWORK
+            JOptionPane.showMessageDialog(this, "Please, select your network devices.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
 
         } else {
-            textAreaOutput.setText(" ");
-            startCaptureButton.setDisable(true);
-            listNetworkDevices.setDisable(true);
-            startCaptureButton.setText("CAPTURING...");
-            stopCaptureButton.setVisible(true);
-            stopCaptureButton.setDisable(false);
-            number = ListNetworkInterfaces2();
-            running.set(true);
+            if (amountPacket.getText().equals("")) {
+                // INFORMACJA O NIE WPISANIU LICZBY PAKIETOW DO PRZECHWYCENIA
+                JOptionPane.showMessageDialog(this, "Please, enter the number of packets to capture.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
 
-            CaptureThread captureThread = new CaptureThread(textAreaOutput, textAreaInfo,
-                    interfaceDevice, errbuf, number, this);
-            captureThread.run();
+            } else {
+                textAreaInfo.setText(" ");
+                textAreaOutput.setText(" ");
+                startCaptureButton.setDisable(true);
+                listNetworkDevices.setDisable(true);
+                //TODO dodać label STATUS
+//                startCaptureButton.setText("CAPTURING...");
+                stopCaptureButton.setVisible(true);
+                stopCaptureButton.setDisable(false);
+                number = ListNetworkInterfaces2();
+                running.set(true);
+
+                thread = new Threads(textAreaOutput, textAreaInfo, amountPacket,
+                        interfaceDevice, errbuf, number, this);
+                thread.start();
+
 
 //            MainSnifferController main = new MainSnifferController(textAreaOutput, textAreaInfo,
 //                    interfaceDevice, errbuf, number, this);
 //            main.showTrans();
+            }
         }
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    public void StopCapturePacket() {
+    public synchronized void StopCapturePacket() throws InterruptedException {
         running.set(false);
         startCaptureButton.setDisable(false);
         stopCaptureButton.setDisable(true);
-        startCaptureButton.setText("START");
+//        startCaptureButton.setText("START");
         listNetworkDevices.setDisable(false);
 
         textAreaInfo.appendText("\n>>> Zatrzynano przechwytywanie");
         System.out.println("\nZatrzynano przechwytywanie");
 
-
         // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
-        JOptionPane.showMessageDialog(this, "Zatrzymano przechwytywanie pakietów", "INFORMATION MESSAGE", JOptionPane.WARNING_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Zatrzymano przechwytywanie pakietów", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
     @FXML
     private void initialize() {
-        textAreaInfo.appendText( "Witam!\nProszę wybrać urządzenie z listy, aby rozpocząć przechwytywanie pakietów.\n");
+        textAreaInfo.appendText("Witam!\nProszę wybrać urządzenie z listy, aby rozpocząć przechwytywanie pakietów.\n");
         loadNameDevices();
         stopCaptureButton.setVisible(false);
 
@@ -211,5 +226,42 @@ public class VisualisationController extends Component {
     }
 
 
+    public void savePackets(ActionEvent actionEvent) {
+
+        String packetCapture = textAreaOutput.getText();
+
+        try {
+            PrintStream out = new PrintStream(
+                    new FileOutputStream("PacketCapture.txt"));
+
+            out.println(packetCapture);
+
+            out.close();
+
+            JOptionPane.showMessageDialog(null, "Packet SAVED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERROR! Could not SAVE packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void loadPackets(ActionEvent actionEvent) {
+        String packetCapture;
+
+        try {
+            BufferedReader in = new BufferedReader(
+                    new FileReader("PacketCapture.txt"));
+
+            while((packetCapture = in.readLine() )!= null) {
+                textAreaOutput.appendText( packetCapture+"\n");
+            }
+            in.close();
+
+            JOptionPane.showMessageDialog(null, "Packets LOADED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERROR! Could not LOAD packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
 }
 
