@@ -29,15 +29,13 @@ public class VisualisationController extends Component {
     StringBuilder errbuf = new StringBuilder();
     List<PcapIf> interfaceDevice = new ArrayList<PcapIf>();
     ObservableList<String> networkName;
-    Thread thread;
+    Threads thread;
     Task task;
     int number = 0;
     public AtomicBoolean running;
 
     public VisualisationController() {
         running = new AtomicBoolean(false);
-        PacketRec packetRec = new PacketRec(textAreaOutput, this);
-
     }
 
     @FXML
@@ -150,7 +148,7 @@ public class VisualisationController extends Component {
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    public synchronized void StartCapturePacket() throws IOException {
+    public synchronized void StartCapturePacket() throws IOException, InterruptedException {
         if (number == 7) {
             // INFORMACJA O NIE WYBRANIU DEVICE NETWORK
             JOptionPane.showMessageDialog(this, "Please, select your network devices.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
@@ -171,15 +169,9 @@ public class VisualisationController extends Component {
                 stopCaptureButton.setDisable(false);
                 number = ListNetworkInterfaces2();
                 running.set(true);
-
                 thread = new Threads(textAreaOutput, textAreaInfo, amountPacket,
                         interfaceDevice, errbuf, number, this);
                 thread.start();
-
-
-//            MainSnifferController main = new MainSnifferController(textAreaOutput, textAreaInfo,
-//                    interfaceDevice, errbuf, number, this);
-//            main.showTrans();
             }
         }
     }
@@ -194,7 +186,7 @@ public class VisualisationController extends Component {
 
         textAreaInfo.appendText("\n>>> Zatrzynano przechwytywanie");
         System.out.println("\nZatrzynano przechwytywanie");
-
+        thread.stopAnimationTimer();
         // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
         JOptionPane.showMessageDialog(this, "Zatrzymano przechwytywanie pakietów", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
 
@@ -252,8 +244,8 @@ public class VisualisationController extends Component {
             BufferedReader in = new BufferedReader(
                     new FileReader("PacketCapture.txt"));
 
-            while((packetCapture = in.readLine() )!= null) {
-                textAreaOutput.appendText( packetCapture+"\n");
+            while ((packetCapture = in.readLine()) != null) {
+                textAreaOutput.appendText(packetCapture + "\n");
             }
             in.close();
 

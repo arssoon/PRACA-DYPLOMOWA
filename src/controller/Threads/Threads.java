@@ -1,6 +1,7 @@
 package controller.Threads;
 
 import controller.VisualisationController;
+import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -18,6 +19,8 @@ public class Threads extends Thread {
     List<PcapIf> interfaceDevice;
     VisualisationController visualisationController;
     LocalTime localTime = LocalTime.now();
+     private String tcpOutput = "";
+     private AnimationTimer timer;
 
     private TextArea textAreaOutput;
 
@@ -51,15 +54,13 @@ public class Threads extends Thread {
     public void run() {
         textAreaInfo.appendText("\n\n>>> Start capturing...\n");
         String info = "";
-//        Pcap pcap;
+        Pcap pcap;
         int snaplen = 64 * 1024;           // Capture all packets, no trucation
         int flags = Pcap.MODE_NON_PROMISCUOUS; // capture all packets
         int timeout = 10 * 1000;           // 10 seconds in millis
         String device = interfaceDevice.get(number).getName();
+
         //Open the selected device to capture packets
-        Pcap pcap;
-
-
         try {
             pcap = Pcap.openLive(device,
                     snaplen,
@@ -74,17 +75,25 @@ public class Threads extends Thread {
             System.out.println("device opened");
             textAreaInfo.appendText("\ndevice opened\n");
 
+            timer  = new AnimationTimer() {
+                @Override
+                public void handle(long l) {
+                    visualisationController.textAreaOutput.setText(tcpOutput);
+                }
+            };
+            timer.start();
+
             //Create packet handler which will receive packets
             pcap.loop(Integer.parseInt(amountPacket.getText()), new PcapPacketHandler() {
 
-                Tcp tcp = new Tcp();
+                Tcp tcp;
 
                 @Override
                 public void nextPacket(PcapPacket packet, Object t) {
+                    tcp = new Tcp();
+                    //
                     if (packet.hasHeader(tcp)) {
-                        System.out.println("Packet TCP:" + tcp.getPacket());
-
-                        visualisationController.textAreaOutput.appendText("\n--------------------------------------------------------------------------------\n" +
+                        tcpOutput +=("\n--------------------------------------------------------------------------------\n" +
                                 " " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond() +
                                 " >>>> Packet TCP " + tcp.getPacket().getFrameNumber() +
                                 "\n--------------------------------------------------------------------------------" +
@@ -99,10 +108,10 @@ public class Threads extends Thread {
                                 "Pcaket: " + tcp.getPacket()
 
                         );
-
                     }
+                    if(Integer.parseInt(amountPacket.getText()) != 10)
                     try {
-                        sleep(1000);
+                        sleep(2);
                     } catch (Exception ex) {
                         System.out.println("Sleep: " + ex.getMessage());
                     }
@@ -117,8 +126,9 @@ public class Threads extends Thread {
                 }
 
             }, errbuf);
-
+            System.out.println(tcpOutput);
             pcap.close();
+
         } catch (Exception ex) {
             System.out.println("Wyjątek w klasie : " + this.getClass() + "\n i miejscu " +
                     ". \nInformacja dla admina: \n" + ex.getMessage());
@@ -134,5 +144,9 @@ public class Threads extends Thread {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public void stopAnimationTimer() {
+        timer.stop();
     }
 }
