@@ -26,7 +26,7 @@ public class MenuController {
     // Menu -> VISUALISATION
     @FXML
     public void openCapturePackets() {
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/VisualisationWindow.fxml"));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/SelectDeviceWindow.fxml"));
         Pane pane = null;
 
         try {
@@ -35,8 +35,8 @@ public class MenuController {
             e.printStackTrace();
         }
 
-        VisualisationController visualisationController = loader.getController();
-        visualisationController.setMainController(mainController);
+        SelectDeviceController selectDeviceController = loader.getController();
+        selectDeviceController.setMainController(mainController);
         mainController.setWindow(pane);
     }
 

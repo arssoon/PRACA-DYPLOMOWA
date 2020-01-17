@@ -31,6 +31,20 @@ public class MainController {
         setWindow(pane);
     }
 
+    public void loadSelectDeviceWindow() {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/SelectDeviceWindow.fxml"));
+        Pane pane = new Pane();
+        try {
+            pane = loader.load();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        SelectDeviceController selectDeviceController = loader.getController();
+        selectDeviceController.setMainController(this);
+        setWindow(pane);
+    }
+
     public void setWindow(Pane pane) {
         mainStack.getChildren().clear();
         mainStack.getChildren().add(pane);
