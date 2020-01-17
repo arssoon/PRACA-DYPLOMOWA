@@ -113,10 +113,6 @@ public class SelectDeviceController extends Component {
         this.mainController = mainController;
     }
 
-    public void action_ChooseNetworkDevice(ActionEvent actionEvent) {
-
-    }
-
     public void action_nextWindow(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/NumberPacketsWindow.fxml"));
         Pane pane = null;
@@ -130,5 +126,9 @@ public class SelectDeviceController extends Component {
         NumberPacketsController numberPacketsController = loader.getController();
         numberPacketsController.setMainController(mainController);
         mainController.setWindow(pane);
+
+        numberPacketsController.setInterfaceDevice(interfaceDevice);
+        numberPacketsController.setErrbuf(errbuf);
+        numberPacketsController.setNumber(number);
     }
 }

@@ -8,11 +8,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import org.jnetpcap.PcapIf;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumberPacketsController extends Component {
+    StringBuilder errbuf;
+    List<PcapIf> interfaceDevice;
+    int number;
 
     private MainController mainController;
     VisualisationController visualisationController;
@@ -28,6 +34,9 @@ public class NumberPacketsController extends Component {
     private Button backButton;
 int numbers;
     public NumberPacketsController() {
+        interfaceDevice = new ArrayList<PcapIf>();
+        errbuf = new StringBuilder();
+
     }
     public void handleClose(MouseEvent dragEvent) {
         System.exit(0);
@@ -56,6 +65,13 @@ int numbers;
         visualisationController.setMainController(mainController);
         mainController.setWindow(pane);
 
+        visualisationController.setAmountPacket(Integer.parseInt(this.amountPacket.getText()));
+
+        //załądowanie zmiennych z Controllera SelectDeviceCOntroller
+        visualisationController.setInterfaceDevice(interfaceDevice);
+        visualisationController.setErrbuf(errbuf);
+        visualisationController.setNumber(number);
+
     }
 
     public void action_captureAtt(ActionEvent actionEvent) {
@@ -66,6 +82,16 @@ int numbers;
         numbers = Integer.parseInt(amountPacket.getText());
 
     }
+    public void setErrbuf(StringBuilder errbuf) {
+        this.errbuf = errbuf;
+    }
 
+    public void setInterfaceDevice(List<PcapIf> interfaceDevice) {
+        this.interfaceDevice = interfaceDevice;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
 
 }

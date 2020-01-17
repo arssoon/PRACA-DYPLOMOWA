@@ -25,10 +25,8 @@ public class VisualisationController extends Component {
     CaptureThread captureThread;
     int number;
     public AtomicBoolean running;
-    private TextField numberPacket;
-    int numbers;
+    int amountPacket;
 
-    NumberPacketsController numPacController;
     @FXML
     private MainController mainController;
     // List network devices
@@ -105,7 +103,7 @@ public class VisualisationController extends Component {
                 stopCaptureButton.setVisible(true);
                 stopCaptureButton.setDisable(false);
                 running.set(true);
-                captureThread = new CaptureThread(textAreaOutput, textAreaInfo, numberPacket,
+                captureThread = new CaptureThread(textAreaOutput, textAreaInfo, amountPacket,
                         interfaceDevice, errbuf, number, this);
                 captureThread.start();
 
@@ -153,6 +151,70 @@ public class VisualisationController extends Component {
         this.mainController = mainController;
     }
 
+    public void action_savePackets(ActionEvent actionEvent) {
+        show.setText(String.valueOf(amountPacket));
+        String packetCapture = textAreaOutput.getText();
+
+        try {
+            PrintStream out = new PrintStream(
+                    new FileOutputStream("PacketCapture.txt"));
+
+            out.println(packetCapture);
+
+            out.close();
+
+            JOptionPane.showMessageDialog(null, "Packet SAVED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "ERROR! Could not SAVE packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+
+    public void action_loadPackets(ActionEvent actionEvent) {
+        System.out.println("Twoj szeczesliwy nr to: " + amountPacket);
+        System.out.println("Numer urzadzenia: " + number);
+        System.out.println("Interface: " + interfaceDevice.get(number).getName());
+        System.out.println("ErrorBuf: " + errbuf.toString());
+
+//        String packetCapture;
+//
+//        try {
+//            BufferedReader in = new BufferedReader(
+//                    new FileReader("PacketCapture.txt"));
+//
+//            while ((packetCapture = in.readLine()) != null) {
+//                textAreaOutput.appendText(packetCapture + "\n");
+//            }
+//            in.close();
+//
+//            JOptionPane.showMessageDialog(null, "Packets LOADED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            JOptionPane.showMessageDialog(null, "ERROR! Could not LOAD packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+//        }
+    }
+
+//--------------------------------------------------------------------------------------------------------------------
+//---------------------------------------------------- SETTERY   -----------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------
+    public void setAmountPacket(int amountPacket) {
+        this.amountPacket = amountPacket;
+    }
+
+    public void setErrbuf(StringBuilder errbuf) {
+        this.errbuf = errbuf;
+    }
+
+    public void setInterfaceDevice(List<PcapIf> interfaceDevice) {
+        this.interfaceDevice = interfaceDevice;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+}
+
+
 //    private void disableAll() {
 //        startCaptureButton.setVisible(false);
 //        stopCaptureButton.setVisible(false);
@@ -177,46 +239,4 @@ public class VisualisationController extends Component {
 //        textAreaOutput.setVisible(false);
 //        textAreaInfo.setVisible(false);
 //    }
-
-
-    public void action_savePackets(ActionEvent actionEvent) {
-        show.setText(String.valueOf(numPacController.numbers));
-        String packetCapture = textAreaOutput.getText();
-
-        try {
-            PrintStream out = new PrintStream(
-                    new FileOutputStream("PacketCapture.txt"));
-
-            out.println(packetCapture);
-
-            out.close();
-
-            JOptionPane.showMessageDialog(null, "Packet SAVED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR! Could not SAVE packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-
-    public void action_loadPackets(ActionEvent actionEvent) {
-        String packetCapture;
-
-        try {
-            BufferedReader in = new BufferedReader(
-                    new FileReader("PacketCapture.txt"));
-
-            while ((packetCapture = in.readLine()) != null) {
-                textAreaOutput.appendText(packetCapture + "\n");
-            }
-            in.close();
-
-            JOptionPane.showMessageDialog(null, "Packets LOADED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR! Could not LOAD packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }
-
-
-}
 
