@@ -413,7 +413,7 @@
                   parent Pcap object data after invocation through loop() or
                   dispatch() method.
                  
-* Add a number of int constants to Pcap.java class to represent various return
+* Add a numberChoose of int constants to Pcap.java class to represent various return
   codes, flags, and mode settings. Each constant has detailed explanation of
   its usage and where it is be applicable.
   

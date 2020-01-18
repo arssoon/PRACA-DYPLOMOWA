@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -8,43 +9,48 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectDeviceController">
    <children>
-      <Label fx:id="closeLabel" layoutX="962.0" layoutY="14.0" onMouseClicked="#handleClose" prefHeight="0.0" prefWidth="0.0" text="X" textFill="#b23131">
+      <Label fx:id="closeLabel" layoutX="959.0" layoutY="14.0" onMouseClicked="#mouse_handleClose" prefHeight="0.0" prefWidth="0.0" text="X" textFill="#b23131">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="800.0" layoutY="700.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: #E45652;" text="BACK" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="44.0" layoutY="718.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="&lt; BACK">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Button>
       <VBox layoutX="210.0" layoutY="210.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
          <children>
-            <Label fx:id="aboutLabel" prefHeight="47.0" prefWidth="487.0" text="Please, select your network device:" textFill="#e8c796" wrapText="true">
+            <Label fx:id="aboutLabel" prefHeight="105.0" prefWidth="481.0" text="Select your network device to capturing" textFill="#e8c796" wrapText="true">
                <VBox.margin>
-                  <Insets left="50.0" top="80.0" />
+                  <Insets left="50.0" top="30.0" />
                </VBox.margin>
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
             </Label>
-            <ComboBox fx:id="devicesComboBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#action_chooseNetworkDevice" prefHeight="37.0" prefWidth="533.0" promptText="Please, choose your network devices ...">
+            <ComboBox fx:id="devicesComboBox" nodeOrientation="LEFT_TO_RIGHT" onAction="#action_chooseNetworkDevice" prefHeight="37.0" prefWidth="533.0" promptText="Please, choose your device ....">
                <VBox.margin>
                   <Insets left="30.0" top="50.0" />
                </VBox.margin>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ComboBox>
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #E45652;" text="NEXT" textFill="WHITE">
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #F5DEB3;" text="NEXT &gt;">
                <VBox.margin>
-                  <Insets left="210.0" top="70.0" />
+                  <Insets left="200.0" top="65.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
          </children>
       </VBox>
    </children>
+   <cursor>
+      <Cursor fx:constant="TEXT" />
+   </cursor>
 </AnchorPane>

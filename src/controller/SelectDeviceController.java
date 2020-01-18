@@ -7,23 +7,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.jnetpcap.Pcap;
-import org.jnetpcap.PcapAddr;
 import org.jnetpcap.PcapIf;
 
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SelectDeviceController extends Component {
+public class SelectDeviceController {
 
-    private MainController mainController;
+    MainController mainController;
     List<PcapIf> interfaceDevice;
     StringBuilder errbuf;
     int number;
@@ -31,13 +28,9 @@ public class SelectDeviceController extends Component {
     @FXML
     private ComboBox devicesComboBox;
     @FXML
-    private Label aboutLabel;
-
-    @FXML
-    private Label closeLabelAbout;
-
-    @FXML
     private Button backButton;
+    @FXML
+    private Button nextButton;
 
     public SelectDeviceController() {
         interfaceDevice = new ArrayList<PcapIf>();
@@ -61,9 +54,9 @@ public class SelectDeviceController extends Component {
         }
     }
 
-    //------------------------------------------------------------------------------------------------------------------
-    public int ListNetworkInterfaces2() throws IOException {
-        int a;
+    // -----    wyodrębnienie numeru wybranego urządzenia    ------------------------------------------------------
+    public int chooseNumberDevice() {
+        int chooseNumber;
 
         String myString = devicesComboBox.getValue().toString();
 
@@ -77,43 +70,18 @@ public class SelectDeviceController extends Component {
             ints.add(Integer.valueOf(i));
         }
         // wpisanie do zmiennej pierwszej wartosci z tablicy 'ints'
-        a = ints.get(0);
-        return a;
+        chooseNumber = ints.get(0);
+
+        return chooseNumber;
     }
+
     //------------------------------------------------------------------------------------------------------------------
-    public void action_chooseNetworkDevice(ActionEvent actionEvent) throws IOException {
-        //TODO wyrzuca błąd przy loopbacku i innych urzadzeniach
-
-        number = ListNetworkInterfaces2();
-        List<PcapAddr> INT = interfaceDevice.get(number).getAddresses();
-
-//        textAreaOutput.appendText("\n------------------------------------------------------- " +
-//                        "\nWybrano urządzenie " + number +
-//                        "\nNazwa : " + interfaceDevice.get(number).getName() +
-//                        "\nID : " + interfaceDevice.get(number).getDescription()
-////                "\nIP Address: " + INT.get(0).getAddr() +
-////                "\nBroadcast Address: " + INT.get(0).getNetmask()
-//        );
-    }
-    @FXML
-    private void initialize() {
-        loadNameDevices();
+    public void action_chooseNetworkDevice(ActionEvent actionEvent) {
+        number = chooseNumberDevice();
+        nextButton.setDisable(false);
     }
 
-    public void handleClose(MouseEvent dragEvent) {
-        System.exit(0);
-    }
-
-    @FXML
-    public void backToMenu(ActionEvent actionEvent) throws IOException {
-        mainController.loadMenuWindow();
-    }
-
-    public void setMainController(MainController mainController) {
-        this.mainController = mainController;
-    }
-
-    public void action_nextWindow(ActionEvent actionEvent) {
+    public void loadNumberPacketsControllerWindow() {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/NumberPacketsWindow.fxml"));
         Pane pane = null;
 
@@ -127,8 +95,33 @@ public class SelectDeviceController extends Component {
         numberPacketsController.setMainController(mainController);
         mainController.setWindow(pane);
 
-        numberPacketsController.setInterfaceDevice(interfaceDevice);
+        //-------   Przesłanie zmiennych do controlera VisualisationController  -----------------------------------
+        numberPacketsController.setNumberChoose(number);
         numberPacketsController.setErrbuf(errbuf);
-        numberPacketsController.setNumber(number);
+        numberPacketsController.setInterfaceDevice(interfaceDevice);
+    }
+
+    public void action_nextWindow(ActionEvent actionEvent) {
+        loadNumberPacketsControllerWindow();
+    }
+
+    @FXML
+    private void initialize() {
+        nextButton.setDisable(true);
+        loadNameDevices();
+
+    }
+
+    public void mouse_handleClose(MouseEvent dragEvent) {
+        System.exit(0);
+    }
+
+    @FXML
+    public void action_backToMenu(ActionEvent actionEvent) {
+        mainController.loadMenuWindow();
+    }
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
     }
 }

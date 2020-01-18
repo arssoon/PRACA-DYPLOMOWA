@@ -13,13 +13,13 @@
    <children>
       <Pane prefHeight="800.0" prefWidth="1000.0">
          <children>
-            <Button fx:id="startCaptureButton" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_StartCapturePacket" prefHeight="39.0" prefWidth="144.0" style="-fx-background-color: #E45652;" text="START" textFill="WHITE">
+            <Button fx:id="startCaptureButton" layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_StartCapturePacket" prefHeight="66.0" prefWidth="144.0" style="-fx-background-color: #E45652;" text="START" textFill="WHITE">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="25.0" />
                </font></Button>
-            <Button fx:id="stopCaptureButton" layoutX="174.0" layoutY="14.0" mnemonicParsing="false" onAction="#action_StopCapturePacket" prefHeight="39.0" prefWidth="144.0" style="-fx-background-color: e1e1e1;" text="STOP" textFill="#e45652">
+            <Button fx:id="stopCaptureButton" layoutX="22.0" layoutY="95.0" mnemonicParsing="false" onAction="#action_StopCapturePacket" prefHeight="66.0" prefWidth="144.0" style="-fx-background-color: e1e1e1;" text="STOP" textFill="#e45652">
                <font>
-                  <Font name="System Bold" size="18.0" />
+                  <Font name="System Bold" size="25.0" />
                </font></Button>
             <TextArea fx:id="textAreaOutput" layoutX="18.0" layoutY="315.0" prefHeight="412.0" prefWidth="668.0" style="-fx-background-color: #E45652;" wrapText="true" />
             <Label fx:id="closeLabel" layoutX="968.0" layoutY="7.0" onMouseClicked="#mouse_handleClose" prefHeight="8.0" prefWidth="7.0" text="X" textFill="#b53131">
@@ -27,65 +27,86 @@
                   <Font name="System Bold" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="908.0" layoutY="748.0" mnemonicParsing="false" onAction="#action_backToMenu" style="-fx-background-color: #E45652;" text="BACK" textFill="WHITE">
+            <Button fx:id="backButton" layoutX="35.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToPreviousWindow" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="&lt; BACK">
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
             <TextArea fx:id="textAreaInfo" layoutX="694.0" layoutY="315.0" prefHeight="412.0" prefWidth="289.0" wrapText="true" />
-            <Label fx:id="amountLabel" layoutX="331.0" layoutY="12.0" prefHeight="43.0" prefWidth="130.0" text="Number of packets to capture:" textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-            <TextField fx:id="show" layoutX="474.0" layoutY="17.0" prefHeight="39.0" prefWidth="144.0" />
-            <Button fx:id="savePacketCapture" layoutX="22.0" layoutY="107.0" mnemonicParsing="false" onAction="#action_savePackets" prefHeight="39.0" prefWidth="144.0" text="SAVE" textFill="#e45652">
+            <Button fx:id="savePacketCapture" layoutX="704.0" layoutY="67.0" mnemonicParsing="false" onAction="#action_savePackets" prefHeight="39.0" prefWidth="144.0" text="SAVE" textFill="#e45652">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="loadPacketCapture" layoutX="22.0" layoutY="157.0" mnemonicParsing="false" onAction="#action_loadPackets" prefHeight="39.0" prefWidth="144.0" text="LOAD" textFill="#e45652">
+            <Button fx:id="loadPacketCapture" layoutX="704.0" layoutY="117.0" mnemonicParsing="false" onAction="#action_loadPackets" prefHeight="39.0" prefWidth="144.0" text="LOAD" textFill="#e45652">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <ToggleButton fx:id="httpButton" layoutX="367.0" layoutY="111.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="HTTP" textFill="#e45652">
+            <ToggleButton fx:id="httpButton" layoutX="365.0" layoutY="14.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="HTTP" textFill="#e45652">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="tcpButton" layoutX="367.0" layoutY="161.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="TCP" textFill="#e45652">
+            <ToggleButton fx:id="tcpButton" layoutX="365.0" layoutY="64.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="TCP" textFill="#e45652">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="udpButton" layoutX="367.0" layoutY="214.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="UDP" textFill="#e45652">
+            <ToggleButton fx:id="udpButton" layoutX="365.0" layoutY="117.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="UDP" textFill="#e45652">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="dnsButton" layoutX="527.0" layoutY="113.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="DNS" textFill="#e45652">
+            <ToggleButton fx:id="dnsButton" layoutX="519.0" layoutY="17.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="DNS" textFill="#e45652">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="icmpButton" layoutX="527.0" layoutY="163.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="ICMP" textFill="#e45652">
+            <ToggleButton fx:id="icmpButton" layoutX="519.0" layoutY="67.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="ICMP" textFill="#e45652">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="smtpButton" layoutX="527.0" layoutY="214.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="SMTP" textFill="#e45652">
+            <ToggleButton fx:id="smtpButton" layoutX="519.0" layoutY="118.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="SMTP" textFill="#e45652">
                <font>
                   <Font name="System Bold Italic" size="18.0" />
                </font>
             </ToggleButton>
-            <Label fx:id="filtersLabel" layoutX="198.0" layoutY="98.0" prefHeight="31.0" prefWidth="144.0" text="Filters:" textFill="WHITE" />
-            <ToggleButton fx:id="enableButton" layoutX="198.0" layoutY="131.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" style="-fx-background-color: #E45652;" text="ENABLE" textFill="WHITE">
+            <Label fx:id="filtersLabel" layoutX="237.0" layoutY="16.0" prefHeight="17.0" prefWidth="87.0" text="Filters" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Label>
+            <ToggleButton fx:id="enableButton" layoutX="208.0" layoutY="64.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" style="-fx-background-color: #E45652;" text="ENABLE" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="disableButton" layoutX="198.0" layoutY="183.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="DISABLE">
+            <ToggleButton fx:id="disableButton" layoutX="208.0" layoutY="117.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="144.0" text="DISABLE">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </ToggleButton>
+            <Button fx:id="backToMenuButton" layoutX="841.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="MENU">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Button>
+            <Label fx:id="filtersLabel1" layoutX="704.0" layoutY="19.0" prefHeight="17.0" prefWidth="87.0" text="File" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField fx:id="statusText" alignment="CENTER" editable="false" layoutX="180.0" layoutY="236.0" prefHeight="65.0" prefWidth="541.0" style="-fx-background-color: #20120F;" text="STATUS">
+               <font>
+                  <Font name="System Bold" size="30.0" />
+               </font>
+            </TextField>
+            <Button fx:id="clearTextButton" layoutX="597.0" layoutY="727.0" mnemonicParsing="false" onAction="#action_clearText" opacity="0.66" style="-fx-background-color: #E45652;" text="CLEAR" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

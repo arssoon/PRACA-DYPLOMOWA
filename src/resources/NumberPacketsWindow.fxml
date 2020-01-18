@@ -11,19 +11,19 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NumberPacketsController">
    <children>
-      <Label fx:id="closeLabel" layoutX="962.0" layoutY="14.0" onMouseClicked="#handleClose" prefHeight="0.0" prefWidth="0.0" text="X" textFill="#b23131">
+      <Label fx:id="closeLabel" layoutX="962.0" layoutY="14.0" onMouseClicked="#mouse_handleClose" prefHeight="0.0" prefWidth="0.0" text="X" textFill="#b23131">
          <font>
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="800.0" layoutY="700.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: #E45652;" text="BACK" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="44.0" layoutY="718.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="&lt; BACK">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Button>
       <VBox layoutX="210.0" layoutY="210.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
          <children>
-            <Label fx:id="aboutLabel" prefHeight="105.0" prefWidth="481.0" text="Please, enter the number of packets to capture" textFill="#e8c796" wrapText="true">
+            <Label fx:id="aboutLabel" prefHeight="105.0" prefWidth="494.0" text="Enter the numberChoose of packets to capture or choose LIVE capture" textFill="#e8c796" wrapText="true">
                <VBox.margin>
                   <Insets left="50.0" top="30.0" />
                </VBox.margin>
@@ -38,19 +38,25 @@
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="captureAttButton" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#action_captureAtt" prefHeight="40.0" prefWidth="164.0" text="Capturing all the time">
+                  <Button fx:id="captureAttButton" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#action_captureAtt" prefHeight="40.0" prefWidth="164.0" text="LIVE capture">
                      <HBox.margin>
                         <Insets left="20.0" top="30.0" />
                      </HBox.margin>
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
                   </Button>
                </children>
-            </HBox>
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #E45652;" text="NEXT" textFill="WHITE">
                <VBox.margin>
-                  <Insets left="200.0" top="50.0" />
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </HBox>
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #F5DEB3;" text="NEXT &gt;">
+               <VBox.margin>
+                  <Insets left="200.0" top="44.0" />
                </VBox.margin>
                <font>
-                  <Font name="System Bold" size="17.0" />
+                  <Font name="System Bold" size="20.0" />
                </font>
             </Button>
          </children>
