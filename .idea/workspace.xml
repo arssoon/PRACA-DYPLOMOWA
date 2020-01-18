@@ -6,25 +6,8 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="new face an application -- correcttion 2">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/PracaDyplomowa.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/MainWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/CHANGE_LOG.txt" beforeDir="false" afterPath="$PROJECT_DIR$/lib/CHANGE_LOG.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/COPYING" beforeDir="false" afterPath="$PROJECT_DIR$/lib/COPYING" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/COPYING.LESSER" beforeDir="false" afterPath="$PROJECT_DIR$/lib/COPYING.LESSER" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/VisualisationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/VisualisationController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/VisualisationWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/VisualisationWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/NumberPacketsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NumberPacketsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SelectDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SelectDeviceController.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Correct thread and show capture packet without filters.">
       <change beforePath="$PROJECT_DIR$/src/controller/VisualisationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisualisationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/NumberPacketsWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/NumberPacketsWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/SelectDeviceWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/SelectDeviceWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" afterDir="false" />
     </list>
     <list id="6fc8ccc1-27fe-4a3d-8190-b720b1d7c207" name="CapturePackets" comment="Today is 10.01.2020" />
     <ignored path="JavaFxApplication.iws" />
@@ -93,18 +76,18 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="183" column="36" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
+            <state relative-caret-position="167">
+              <caret line="104" column="29" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#5978#5979#0" expanded="true" />
                 <element signature="e#6020#6021#0" expanded="true" />
-                <element signature="e#6554#6555#0" expanded="true" />
-                <element signature="e#6704#6705#0" expanded="true" />
-                <element signature="e#8062#8063#0" expanded="true" />
-                <element signature="e#8163#8164#0" expanded="true" />
-                <element signature="e#8250#8251#0" expanded="true" />
-                <element signature="e#8542#8543#0" expanded="true" />
+                <element signature="e#7282#7283#0" expanded="true" />
+                <element signature="e#7553#7554#0" expanded="true" />
+                <element signature="e#9032#9033#0" expanded="true" />
+                <element signature="e#9254#9255#0" expanded="true" />
+                <element signature="e#9462#9463#0" expanded="true" />
+                <element signature="e#9996#9997#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -518,7 +501,7 @@
       <workItem from="1579195866926" duration="18000" />
       <workItem from="1579202689103" duration="20086000" />
       <workItem from="1579248772696" duration="6233000" />
-      <workItem from="1579266877125" duration="41244000" />
+      <workItem from="1579266877125" duration="41554000" />
     </task>
     <task id="LOCAL-00001" summary="Created graphical design and capturing packets">
       <created>1578593820100</created>
@@ -583,11 +566,18 @@
       <option name="project" value="LOCAL" />
       <updated>1579267026889</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Correct thread and show capture packet without filters.">
+      <created>1579350627486</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1579350627486</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="368289000" />
+    <option name="totallyTimeSpent" value="368599000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -655,7 +645,8 @@
     <MESSAGE value="Thread is completed (without share on window in Packet)" />
     <MESSAGE value="new face an application" />
     <MESSAGE value="new face an application -- correcttion 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="new face an application -- correcttion 2" />
+    <MESSAGE value="Correct thread and show capture packet without filters." />
+    <option name="LAST_COMMIT_MESSAGE" value="Correct thread and show capture packet without filters." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1153,18 +1144,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="183" column="36" selection-start-line="183" selection-start-column="36" selection-end-line="183" selection-end-column="36" />
+        <state relative-caret-position="167">
+          <caret line="104" column="29" selection-start-line="104" selection-start-column="29" selection-end-line="104" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5978#5979#0" expanded="true" />
             <element signature="e#6020#6021#0" expanded="true" />
-            <element signature="e#6554#6555#0" expanded="true" />
-            <element signature="e#6704#6705#0" expanded="true" />
-            <element signature="e#8062#8063#0" expanded="true" />
-            <element signature="e#8163#8164#0" expanded="true" />
-            <element signature="e#8250#8251#0" expanded="true" />
-            <element signature="e#8542#8543#0" expanded="true" />
+            <element signature="e#7282#7283#0" expanded="true" />
+            <element signature="e#7553#7554#0" expanded="true" />
+            <element signature="e#9032#9033#0" expanded="true" />
+            <element signature="e#9254#9255#0" expanded="true" />
+            <element signature="e#9462#9463#0" expanded="true" />
+            <element signature="e#9996#9997#0" expanded="true" />
           </folding>
         </state>
       </provider>
