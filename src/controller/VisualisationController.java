@@ -130,6 +130,7 @@ public class VisualisationController extends Component {
         );
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     public void action_savePackets(ActionEvent actionEvent) {
         String packetCapture = textAreaOutput.getText();
 
@@ -147,6 +148,7 @@ public class VisualisationController extends Component {
         }
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     public void action_loadPackets(ActionEvent actionEvent) {
         String packetCapture;
 
@@ -164,11 +166,14 @@ public class VisualisationController extends Component {
         }
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     @FXML
     private void initialize() {
         listener_clearText();
         disableAll();
     }
+
+    //------------------------------------------------------------------------------------------------------------------
     private void disableAll() {
         clearTextButton.setVisible(false);
         stopCaptureButton.setVisible(false);
@@ -183,22 +188,27 @@ public class VisualisationController extends Component {
         icmpButton.setDisable(true);
         smtpButton.setDisable(true);
     }
+
+    //------------------------------------------------------------------------------------------------------------------
     public void action_clearText(ActionEvent actionEvent) {
         textAreaOutput.setText("");
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     // LABEL (X) - zamknięcie całej aplikacji
     @FXML
     public void mouse_handleClose(MouseEvent dragEvent) {
         System.exit(0);
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     // BUTTON - powrót do menu
     @FXML
     public void action_backToMenu(ActionEvent actionEvent) {
         mainController.loadMenuWindow();
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     // BUTTON - powrót do poprzedniego okna
     public void action_backToPreviousWindow(ActionEvent actionEvent) {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/NumberPacketsWindow.fxml"));
@@ -228,19 +238,23 @@ public class VisualisationController extends Component {
         this.mainController = mainController;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     public void setAmountPacket(int amountPacket) {
         this.amountPacket = amountPacket;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     public void setErrbuf(StringBuilder errbuf) {
         this.errbuf = errbuf;
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     public void setInterfaceDevice(List<PcapIf> interfaceDevice) {
         this.interfaceDevice = interfaceDevice;
         nameInterface = interfaceDevice.get(numberChoose).getName();
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     public void setNumberChoose(int numberChoose) {
         this.numberChoose = numberChoose;
     }
