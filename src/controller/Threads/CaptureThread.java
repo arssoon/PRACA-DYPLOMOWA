@@ -4,9 +4,12 @@ import controller.VisualisationController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.TextArea;
 import org.jnetpcap.Pcap;
+import org.jnetpcap.PcapBpfProgram;
 import org.jnetpcap.packet.PcapPacket;
 import org.jnetpcap.packet.PcapPacketHandler;
+import org.jnetpcap.protocol.tcpip.Http;
 import org.jnetpcap.protocol.tcpip.Tcp;
+import org.jnetpcap.protocol.tcpip.Udp;
 
 import java.time.LocalTime;
 
@@ -46,6 +49,7 @@ public class CaptureThread extends Thread {
         int timeout = 10 * 1000;           // 10 seconds in millis
         //Open the selected device to capture packets
         try {
+            //TODO ustaw wszystko na default
             pcap = Pcap.openLive(nameDevice,
                     snaplen,
                     flags,
@@ -66,35 +70,70 @@ public class CaptureThread extends Thread {
                     textAreaOutput.caretPositionProperty();
                 }
             };
+
+            PcapBpfProgram filter = new PcapBpfProgram();
+            String expression = "port 443";
+            int optimize = 0; // 1 means true, 0 means false
+            int netmask = 0;
+
+            int r = pcap.compile(filter, expression, optimize, netmask);
+            if (r != Pcap.OK) {
+                System.out.println("Filter error: " + pcap.getErr());
+            }
+//            pcap.setFilter(filter);
+
             timer.start();
             //Create packet handler which will receive packets
             pcap.loop(amountPacket, new PcapPacketHandler() {
-
+                Udp udp;
                 Tcp tcp;
-
+                Http http;
                 @Override
                 public void nextPacket(PcapPacket packet, Object t) {
                     tcp = new Tcp();
-                    if (packet.hasHeader(tcp)) {
-                        textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                    udp = new Udp();
+                    http = new Http();
+//                    if (packet.hasHeader(tcp)) {
+//                        textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+//
+//                        //TODO zmienic ------ setText --- na --- appendText ---
+//                        textAreaOutput.setText("\n--------------------------------------------------------------------------------\n" +
+//                                " " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond() +
+//                                " >>>> Packet TCP " + tcp.getPacket().getFrameNumber() +
+//                                "\n--------------------------------------------------------------------------------" +
+//                                //FRAME:
+//                                "\nNumer: " + tcp.getPacket().getFrameNumber() + "\n" +
+//                                "TimeMilis: " + (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60*60)+1) % 24 +":"+
+//                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60)) % 60 +":" +
+//                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / 1000 ) % 60 +":" +
+//                                (tcp.getPacket().getCaptureHeader().timestampInMillis()% 1000) + "\n" +
+//                                "Caplen: " + tcp.getPacket().getCaptureHeader().caplen() + "\n" +
+//                                "Wiren: " + tcp.getPacket().getCaptureHeader().wirelen() + "\n" +
+//                                "Pcaket: " + tcp.getPacket()
+//
+//                        );
+//                    } else
+//                        if (packet.hasHeader(pcap.setFilter(filter))) {
+//                        System.out.println("Packet FILTER:" + pcap.setFilter(filter));
+//
+//                    } else if (packet.hasHeader(http)) {
+//                            textAreaOutput.setText("Packet HTTP:" + http.getPacket());
+//
+//                        }
 
-                        //TODO zmienic ------ setText --- na --- appendText ---
-                        textAreaOutput.setText("\n--------------------------------------------------------------------------------\n" +
-                                " " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond() +
-                                " >>>> Packet TCP " + tcp.getPacket().getFrameNumber() +
-                                "\n--------------------------------------------------------------------------------" +
-                                //FRAME:
-                                "\nNumer: " + tcp.getPacket().getFrameNumber() + "\n" +
-                                "TimeMilis: " + (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60*60)+1) % 24 +":"+
-                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60)) % 60 +":" +
-                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / 1000 ) % 60 +":" +
-                                (tcp.getPacket().getCaptureHeader().timestampInMillis()% 1000) + "\n" +
-                                "Caplen: " + tcp.getPacket().getCaptureHeader().caplen() + "\n" +
-                                "Wiren: " + tcp.getPacket().getCaptureHeader().wirelen() + "\n" +
-                                "Pcaket: " + tcp.getPacket()
-
-                        );
+//                    if( packet.hasHeader(tcp))
+//                    {
+//                        if (tcp.source() == 80) {
+//                            System.out.println("HTTP protocol" + tcp.getPacket());
+//                        }
+//                    }else
+                        if( packet.hasHeader(udp))
+                    {
+                        if ((udp.source() == 53) || (udp.destination() == 53)) {
+                            textAreaOutput.appendText("HTTP protocol" + udp.getPacket());
+                        }
                     }
+
                     if(amountPacket != 10)
                     try {
                         sleep(80);

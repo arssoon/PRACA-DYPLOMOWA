@@ -1,5 +1,8 @@
 <component name="libraryTable">
   <library name="pcap4j-core-1.7.3">
+    <ANNOTATIONS>
+      <root url="file://$PROJECT_DIR$/../Main" />
+    </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-core-1.7.3.jar!/" />
       <root url="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-core-2.0.0-alpha.6.jar!/" />

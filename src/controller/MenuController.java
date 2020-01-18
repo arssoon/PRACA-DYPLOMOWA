@@ -26,6 +26,20 @@ public class MenuController {
     // Menu -> VISUALISATION
     @FXML
     public void openCapturePackets() {
+        //TODO ----- delete the text comment
+//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/VisualisationWindow.fxml"));
+//        Pane pane = null;
+//
+//        try {
+//            pane = loader.load();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        VisualisationController visualisationController = loader.getController();
+//        visualisationController.setMainController(mainController);
+//        mainController.setWindow(pane);
+
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/SelectDeviceWindow.fxml"));
         Pane pane = null;
 

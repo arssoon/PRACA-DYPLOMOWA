@@ -72,6 +72,19 @@ public class VisualisationController extends Component {
     @FXML
     private ToggleButton httpButton;
 
+    @FXML
+    private ToggleButton adButton;
+    @FXML
+    private ToggleButton imapsButton;
+    @FXML
+    private ToggleButton popButton;
+    @FXML
+    private ToggleButton sqlButton;
+    @FXML
+    private ToggleButton imapButton;
+    @FXML
+    private ToggleButton httpSslButton;
+
     //--------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------- METODY   -----------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------
@@ -121,10 +134,12 @@ public class VisualisationController extends Component {
     //----------------  metoda nasłuchująca pole TextField jaką user wpisał wartość    ----------------------------------
     public void listener_clearText() {
         textAreaOutput.textProperty().addListener((observable) -> {
-                    if (textAreaOutput.getText().equals(" ")) {
+                    if (textAreaOutput.getText().isEmpty()) {
                         clearTextButton.setVisible(false);
+                        savePacketCapture.setDisable(true);
                     } else {
                         clearTextButton.setVisible(true);
+                        savePacketCapture.setDisable(false);
                     }
                 }
         );
@@ -169,17 +184,35 @@ public class VisualisationController extends Component {
     //------------------------------------------------------------------------------------------------------------------
     @FXML
     private void initialize() {
+        clearTextButton.setVisible(false);
+        stopCaptureButton.setDisable(true);
+        savePacketCapture.setDisable(true);
+
         listener_clearText();
-        disableAll();
+        disableButtonFilter();
+
+
+        //        if(enableButton.isSelected()) {
+//            if(portSecial.isSelected()) {
+//                String PORT = portSpecialText.getText();
+//                captureThread.setFiler
+//            }
+//        }
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    private void disableAll() {
-        clearTextButton.setVisible(false);
-        stopCaptureButton.setVisible(false);
-        loadPacketCapture.setDisable(true);
+    public void action_enableButtonFilter(ActionEvent actionEvent) {
+        enableButtonFilter();
+    }
 
-        //filters BUTTON
+    //------------------------------------------------------------------------------------------------------------------
+    public void action_disableButtonFilter(ActionEvent actionEvent) {
+        disableButtonFilter();
+    }
+
+    //------------------------------------------------------------------------------------------------------------------
+    private void disableButtonFilter() {
+        enableButton.setDisable(false);
         disableButton.setDisable(true);
         httpButton.setDisable(true);
         tcpButton.setDisable(true);
@@ -187,6 +220,29 @@ public class VisualisationController extends Component {
         dnsButton.setDisable(true);
         icmpButton.setDisable(true);
         smtpButton.setDisable(true);
+        httpSslButton.setDisable(true);
+        popButton.setDisable(true);
+        imapButton.setDisable(true);
+        imapsButton.setDisable(true);
+        sqlButton.setDisable(true);
+        adButton.setDisable(true);
+    }
+
+    private void enableButtonFilter() {
+        enableButton.setDisable(true);
+        disableButton.setDisable(false);
+        httpButton.setDisable(false);
+        tcpButton.setDisable(false);
+        udpButton.setDisable(false);
+        dnsButton.setDisable(false);
+        icmpButton.setDisable(false);
+        smtpButton.setDisable(false);
+        httpSslButton.setDisable(false);
+        popButton.setDisable(false);
+        imapButton.setDisable(false);
+        imapsButton.setDisable(false);
+        sqlButton.setDisable(false);
+        adButton.setDisable(false);
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -258,5 +314,4 @@ public class VisualisationController extends Component {
     public void setNumberChoose(int numberChoose) {
         this.numberChoose = numberChoose;
     }
-
 }
