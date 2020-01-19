@@ -4,9 +4,10 @@ import controller.VisualisationController;
 import javafx.animation.AnimationTimer;
 import javafx.scene.control.TextArea;
 import org.jnetpcap.Pcap;
-import org.jnetpcap.PcapBpfProgram;
 import org.jnetpcap.packet.PcapPacket;
 import org.jnetpcap.packet.PcapPacketHandler;
+import org.jnetpcap.protocol.network.Arp;
+import org.jnetpcap.protocol.network.Icmp;
 import org.jnetpcap.protocol.tcpip.Http;
 import org.jnetpcap.protocol.tcpip.Tcp;
 import org.jnetpcap.protocol.tcpip.Udp;
@@ -63,88 +64,57 @@ public class CaptureThread extends Thread {
             System.out.println("device opened");
             textAreaInfo.appendText("\ndevice opened\n");
 
-            timer  = new AnimationTimer() {
+            timer = new AnimationTimer() {
                 @Override
                 public void handle(long l) {
-//                     textAreaOutput.setText(tcpOut);
+//                    textAreaOutput.setText(tcpOut);
                     textAreaOutput.caretPositionProperty();
                 }
             };
 
-            PcapBpfProgram filter = new PcapBpfProgram();
-            String expression = "port 443";
-            int optimize = 0; // 1 means true, 0 means false
-            int netmask = 0;
-
-            int r = pcap.compile(filter, expression, optimize, netmask);
-            if (r != Pcap.OK) {
-                System.out.println("Filter error: " + pcap.getErr());
-            }
-//            pcap.setFilter(filter);
-
             timer.start();
+
             //Create packet handler which will receive packets
             pcap.loop(amountPacket, new PcapPacketHandler() {
                 Udp udp;
                 Tcp tcp;
                 Http http;
+                Arp arp;
+                Icmp icmp;
+
                 @Override
                 public void nextPacket(PcapPacket packet, Object t) {
                     tcp = new Tcp();
                     udp = new Udp();
                     http = new Http();
-//                    if (packet.hasHeader(tcp)) {
-//                        textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
-//
-//                        //TODO zmienic ------ setText --- na --- appendText ---
-//                        textAreaOutput.setText("\n--------------------------------------------------------------------------------\n" +
-//                                " " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond() +
-//                                " >>>> Packet TCP " + tcp.getPacket().getFrameNumber() +
-//                                "\n--------------------------------------------------------------------------------" +
-//                                //FRAME:
-//                                "\nNumer: " + tcp.getPacket().getFrameNumber() + "\n" +
-//                                "TimeMilis: " + (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60*60)+1) % 24 +":"+
-//                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60)) % 60 +":" +
-//                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / 1000 ) % 60 +":" +
-//                                (tcp.getPacket().getCaptureHeader().timestampInMillis()% 1000) + "\n" +
-//                                "Caplen: " + tcp.getPacket().getCaptureHeader().caplen() + "\n" +
-//                                "Wiren: " + tcp.getPacket().getCaptureHeader().wirelen() + "\n" +
-//                                "Pcaket: " + tcp.getPacket()
-//
-//                        );
-//                    } else
-//                        if (packet.hasHeader(pcap.setFilter(filter))) {
-//                        System.out.println("Packet FILTER:" + pcap.setFilter(filter));
-//
-//                    } else if (packet.hasHeader(http)) {
-//                            textAreaOutput.setText("Packet HTTP:" + http.getPacket());
-//
-//                        }
-
-//                    if( packet.hasHeader(tcp))
-//                    {
-//                        if (tcp.source() == 80) {
-//                            System.out.println("HTTP protocol" + tcp.getPacket());
-//                        }
-//                    }else
-                        if( packet.hasHeader(udp))
-                    {
-                        if ((udp.source() == 53) || (udp.destination() == 53)) {
-                            textAreaOutput.appendText("HTTP protocol" + udp.getPacket());
+                    arp = new Arp();
+                    icmp = new Icmp();
+                    if (vController.disableButton.isDisabled()) {
+                        if ((packet.hasHeader(tcp))) {
+                            textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                            System.out.println("Packet TCP:" + tcp.getPacket());
+                        } else if (packet.hasHeader(udp)) {
+                            textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                            textAreaOutput.appendText("Packet UDP:" + udp.getPacket());
+//                            System.out.println(("Packet UDP:" + udp.getPacket()));
                         }
                     }
-
-                    if(amountPacket != 10)
-                    try {
-                        sleep(80);
-                    } catch (Exception ex) {
-                        System.out.println("Sleep: " + ex.getMessage());
+                    else {
+                        packetFilter(packet, tcp, udp, http, arp, icmp);
                     }
-                    if(vController.running.get() == false) {
+                    if (amountPacket > 10 || amountPacket == -1) {
+                        try {
+                            sleep(80);
+                        } catch (Exception ex) {
+                            System.out.println("Sleep: " + ex.getMessage());
+                        }
+                    }
+                    if (vController.running.get() == false) {
                         try {
                             join();
+                            pcap.breakloop();
                         } catch (InterruptedException e) {
-                            textAreaInfo.appendText("Catch: " +  e.getMessage());
+                            textAreaInfo.appendText("Catch: " + e.getMessage());
                         }
 
                     }
@@ -152,7 +122,9 @@ public class CaptureThread extends Thread {
                 }
 
             }, errbuf);
+            pcap.breakloop();
             pcap.close();
+
 
         } catch (Exception ex) {
             System.out.println("Wyjątek w klasie : " + this.getClass() + "\n i miejscu " +
@@ -166,4 +138,93 @@ public class CaptureThread extends Thread {
     public void stopAnimationTimer() {
         timer.stop();
     }
+
+    public void packetFilter(PcapPacket packet, Tcp tcp, Udp udp, Http http, Arp arp, Icmp icmp) {
+        //--------------------  HTTP    ---------------------------------------
+        if (vController.filtersGroup.getSelectedToggle() == vController.httpButton) {
+            if (packet.hasHeader(http)) {
+                textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                textAreaOutput.appendText("Http protocol" + http.getPacket());
+            }
+        }
+        //--------------------  DNS    ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.dnsButton) {
+            if (packet.hasHeader(udp)) {
+                if ((udp.source() == 53) || (udp.destination() == 53)) {
+                    textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                    textAreaOutput.appendText("DNS protocol" + udp.getPacket());
+                }
+            }
+        }
+        //--------------------  ICMP    ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.icmpButton) {
+            if (packet.hasHeader(icmp)) {
+                textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                textAreaOutput.appendText("ICMP protocol" + icmp.getPacket());
+            }
+        }
+        //--------------------  ARP    ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.arpButton) {
+            if (packet.hasHeader(arp)) {
+                textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                textAreaOutput.appendText("ARP protocol" + arp.getPacket());
+            }
+        }
+        //--------------------  HTTP SSL   ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.httpSslButton) {
+            if (packet.hasHeader(tcp)) {
+                textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                if ((tcp.source() == 443) || (tcp.destination() == 443)) {
+                    textAreaOutput.appendText("TCP- HTTP SSL protocol" + tcp.getPacket());
+                }
+            }
+        }
+        //--------------------  FTP    ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.ftpButton) {
+            if (packet.hasHeader(tcp)) {
+                if ((tcp.source() == 21) || (tcp.destination() == 21)) {
+                    textAreaOutput.appendText("TCP- FTP protocol" + tcp.getPacket());
+                }
+            }
+        }
+        //--------------------  POP3    ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.popButton) {
+            if (packet.hasHeader(tcp)) {
+                if ((tcp.source() == 110) || (tcp.destination() == 110)) {
+                    textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                    textAreaOutput.appendText("TCP- POP3 protocol" + tcp.getPacket());
+                }
+            }
+        }
+        //--------------------  SMTP    ---------------------------------------
+        else if (vController.filtersGroup.getSelectedToggle() == vController.smtpButton) {
+            if (packet.hasHeader(tcp)) {
+                if ((tcp.source() == 25) || (tcp.destination() == 25)) {
+                    textAreaInfo.setText(String.valueOf(vController.progress.incrementAndGet()));
+                    textAreaOutput.appendText("TCP- SMTP protocol" + tcp.getPacket());
+                }
+            }
+        }
+
+    }
 }
+
+
+//TODO zmienic ------ setText --- na --- appendText ---
+//
+//                        textAreaOutput.setText("\n--------------------------------------------------------------------------------\n" +
+//                                " " + localTime.getHour() + ":" + localTime.getMinute() + ":" + localTime.getSecond() +
+//                                " >>>> Packet TCP " + tcp.getPacket().getFrameNumber() +
+//                                "\n--------------------------------------------------------------------------------" +
+//                                //FRAME:
+//                                "\nNumer: " + tcp.getPacket().getFrameNumber() + "\n" +
+//                                "TimeMilis: " + (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60*60)+1) % 24 +":"+
+//                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / (1000 * 60)) % 60 +":" +
+//                                (tcp.getPacket().getCaptureHeader().timestampInMillis() / 1000 ) % 60 +":" +
+//                                (tcp.getPacket().getCaptureHeader().timestampInMillis()% 1000) + "\n" +
+//                                "Caplen: " + tcp.getPacket().getCaptureHeader().caplen() + "\n" +
+//                                "Wiren: " + tcp.getPacket().getCaptureHeader().wirelen() + "\n" +
+//                                "Packet: " + tcp.getPacket()
+//
+//                        );
+//

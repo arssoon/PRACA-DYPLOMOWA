@@ -4,10 +4,10 @@ import controller.Threads.CaptureThread;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.jnetpcap.PcapIf;
@@ -56,35 +56,30 @@ public class VisualisationController extends Component {
 
     //filtry
     @FXML
-    private ToggleButton enableButton;
+    public ToggleButton enableButton;
     @FXML
-    private ToggleButton disableButton;
+    public ToggleButton disableButton;
     @FXML
-    private ToggleButton smtpButton;
+    public ToggleButton httpButton;
     @FXML
-    private ToggleButton icmpButton;
+    public ToggleButton icmpButton;
     @FXML
-    private ToggleButton dnsButton;
+    public ToggleButton httpSslButton;
     @FXML
-    private ToggleButton udpButton;
+    public ToggleButton popButton;
     @FXML
-    private ToggleButton tcpButton;
+    public ToggleButton dnsButton;
     @FXML
-    private ToggleButton httpButton;
-
+    public ToggleButton ftpButton;
     @FXML
-    private ToggleButton adButton;
+    public ToggleButton smtpButton;
     @FXML
-    private ToggleButton imapsButton;
+    public ToggleButton arpButton;
     @FXML
-    private ToggleButton popButton;
-    @FXML
-    private ToggleButton sqlButton;
-    @FXML
-    private ToggleButton imapButton;
-    @FXML
-    private ToggleButton httpSslButton;
-
+    public ToggleGroup filtersGroup;
+    //dodatkowe
+    ToggleButton nowSelectedButton;
+    ToggleButton oldSelectedButton;
     //--------------------------------------------------------------------------------------------------------------------
 //----------------------------------------------------- METODY   -----------------------------------------------------
 //--------------------------------------------------------------------------------------------------------------------
@@ -95,6 +90,8 @@ public class VisualisationController extends Component {
         running = new AtomicBoolean(false);
         interfaceDevice = new ArrayList<PcapIf>();
         errbuf = new StringBuilder();
+        nowSelectedButton = new ToggleButton();
+        oldSelectedButton = new ToggleButton();
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -191,6 +188,7 @@ public class VisualisationController extends Component {
         listener_clearText();
         disableButtonFilter();
 
+        listener_filtersButton();
 
         //        if(enableButton.isSelected()) {
 //            if(portSecial.isSelected()) {
@@ -208,6 +206,7 @@ public class VisualisationController extends Component {
     //------------------------------------------------------------------------------------------------------------------
     public void action_disableButtonFilter(ActionEvent actionEvent) {
         disableButtonFilter();
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -215,34 +214,41 @@ public class VisualisationController extends Component {
         enableButton.setDisable(false);
         disableButton.setDisable(true);
         httpButton.setDisable(true);
-        tcpButton.setDisable(true);
-        udpButton.setDisable(true);
+        httpSslButton.setDisable(true);
         dnsButton.setDisable(true);
         icmpButton.setDisable(true);
         smtpButton.setDisable(true);
-        httpSslButton.setDisable(true);
         popButton.setDisable(true);
-        imapButton.setDisable(true);
-        imapsButton.setDisable(true);
-        sqlButton.setDisable(true);
-        adButton.setDisable(true);
+        ftpButton.setDisable(true);
+        arpButton.setDisable(true);
     }
 
+    //------------------------------------------------------------------------------------------------------------------
     private void enableButtonFilter() {
         enableButton.setDisable(true);
         disableButton.setDisable(false);
         httpButton.setDisable(false);
-        tcpButton.setDisable(false);
-        udpButton.setDisable(false);
         dnsButton.setDisable(false);
         icmpButton.setDisable(false);
         smtpButton.setDisable(false);
         httpSslButton.setDisable(false);
         popButton.setDisable(false);
-        imapButton.setDisable(false);
-        imapsButton.setDisable(false);
-        sqlButton.setDisable(false);
-        adButton.setDisable(false);
+        arpButton.setDisable(false);
+        ftpButton.setDisable(false);
+    }
+
+    //--------  nasłuchiwanie aktywnego ToggleButtona w filtrach    ---------------------------------
+    public void listener_filtersButton() {
+        filtersGroup.selectedToggleProperty().addListener((observable) -> {
+                    if (filtersGroup.getSelectedToggle().isSelected()) {
+                        nowSelectedButton = (ToggleButton) filtersGroup.getSelectedToggle();
+                        nowSelectedButton.setDisable(true);
+                        oldSelectedButton.setDisable(false);
+                        oldSelectedButton = (ToggleButton) filtersGroup.getSelectedToggle();
+                    }
+
+                }
+        );
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -314,4 +320,5 @@ public class VisualisationController extends Component {
     public void setNumberChoose(int numberChoose) {
         this.numberChoose = numberChoose;
     }
+
 }
