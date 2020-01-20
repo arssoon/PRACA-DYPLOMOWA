@@ -23,20 +23,19 @@ public class HelpController {
 
     @FXML
     private void initialize() {
-        helpLabel.setText("Welcome of a system for capture data sent in network LAN.\n\n\n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n" +
-                          "capture = \n"
-                );
+        helpLabel.setText("Aplikacja do przechwytywania pakietów Java w sieci LAN.\n\n" +
+                "START = Zaczyna przechwytywanie pakietów.\n" +
+                "STOP = Zatrzymuję przechwytywanie pakietów.\n" +
+                "ZAPISZ = Zapisuje przechwycone pakiety w pliku.\n" +
+                "ZAŁADUJ = Wyświetla plik z przechwyconymi pakietami.\n" +
+                "ODBLOKUJ = Odblokowanie portów.\n" +
+                "ZABLOKUJ = Zablokowanie wszystkich portów.\n" +
+                "MENU = Przejście do menu głównego.\n" +
+                "WSTECZ = Przejście do poprzedniego okna.\n" +
+                "'X' = Wyłącza aplikacje.\n" +
+                "WYCZYŚĆ = Czyści okienko do przechwytywania pakietów.\n" +
+                "'PORTY' = Przechwytuje konkretne porty.\n"
+        );
     }
 
     @FXML
@@ -45,7 +44,7 @@ public class HelpController {
     }
 
     @FXML
-    public void backToMenu(ActionEvent actionEvent) throws IOException {
+    public void action_backToMenu(ActionEvent actionEvent) throws IOException {
         mainController.loadMenuWindow();
     }
 

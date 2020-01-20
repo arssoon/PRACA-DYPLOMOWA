@@ -21,13 +21,22 @@ public class AboutController {
     @FXML
     private Button backButton;
 
+    @FXML
+    private void initialize() {
+        aboutLabel.setText("\t  PRACA DYPLOMOWA\n\n" +
+                "Nazwa aplikacji -> Capture Packets\n" +
+                "Wykonał -> Arkadiusz Sobol\n" +
+                "Promotor -> Jarosław Wikarek\n\n"
+
+        );
+    }
 
     public void handleClose(MouseEvent dragEvent) {
         System.exit(0);
     }
 
     @FXML
-    public void backToMenu(ActionEvent actionEvent) throws IOException {
+    public void action_backToMenu(ActionEvent actionEvent) throws IOException {
         mainController.loadMenuWindow();
     }
 

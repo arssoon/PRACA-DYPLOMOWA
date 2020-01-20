@@ -60,7 +60,7 @@ public class NumberPacketsController extends Component {
 
     @FXML
     public void mouse_handleClose(MouseEvent dragEvent) {
-        System.exit(0);
+        System.exit(ABORT);
     }
 
     @FXML

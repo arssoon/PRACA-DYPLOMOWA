@@ -1,4 +1,3 @@
 Manifest-Version: 1.0
-Class-Path: C:\Users\Arson\Desktop\PracaDyplomowa\src\fx\Main.java
 Main-Class: fx.Main
 

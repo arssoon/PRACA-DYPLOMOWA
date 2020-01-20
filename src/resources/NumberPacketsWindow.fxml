@@ -16,14 +16,14 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="44.0" layoutY="718.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="&lt; BACK">
+      <Button fx:id="backButton" layoutX="44.0" layoutY="718.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
       <VBox layoutX="210.0" layoutY="210.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
          <children>
-            <Label fx:id="aboutLabel" prefHeight="105.0" prefWidth="494.0" text="Enter the numberChoose of packets to capture or choose LIVE capture" textFill="#e8c796" wrapText="true">
+            <Label fx:id="aboutLabel" prefHeight="137.0" prefWidth="494.0" text="Wprowadź liczbę pakietów do przechwycenia lub wybierz przechwytywanie NA ŻYWO" textFill="#e8c796" wrapText="true">
                <VBox.margin>
                   <Insets left="50.0" top="30.0" />
                </VBox.margin>
@@ -33,12 +33,12 @@
             </Label>
             <HBox prefHeight="88.0" prefWidth="600.0">
                <children>
-                  <TextField fx:id="amountPacket" alignment="CENTER" maxWidth="300.0" onAction="#action_numberPacket" opacity="0.84" prefHeight="39.0" prefWidth="300.0" promptText="Number of Packet...">
+                  <TextField fx:id="amountPacket" alignment="CENTER" maxWidth="300.0" onAction="#action_numberPacket" opacity="0.84" prefHeight="39.0" prefWidth="300.0" promptText="Wpisz ilość pakietów ...">
                      <HBox.margin>
                         <Insets left="50.0" top="30.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button fx:id="captureAttButton" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#action_captureAtt" prefHeight="40.0" prefWidth="164.0" text="LIVE capture">
+                  <Button fx:id="captureAttButton" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#action_captureAtt" prefHeight="40.0" prefWidth="164.0" text="LIVE">
                      <HBox.margin>
                         <Insets left="20.0" top="30.0" />
                      </HBox.margin>
@@ -51,7 +51,7 @@
                   <Insets top="20.0" />
                </VBox.margin>
             </HBox>
-            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #F5DEB3;" text="NEXT &gt;">
+            <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #F5DEB3;" text="DALEJ &gt;">
                <VBox.margin>
                   <Insets left="200.0" top="44.0" />
                </VBox.margin>
@@ -61,5 +61,10 @@
             </Button>
          </children>
       </VBox>
+      <Label alignment="CENTER" layoutX="64.0" layoutY="36.0" prefHeight="107.0" prefWidth="892.0" text="CAPTURE PACKETS">
+         <font>
+            <Font size="86.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

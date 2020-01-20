@@ -1,6 +1,5 @@
 package controller;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -9,6 +8,8 @@ import javafx.scene.layout.Pane;
 
 import java.awt.event.ActionEvent;
 import java.io.IOException;
+
+import static org.jnetpcap.protocol.sigtran.SctpChunk.ABORT;
 
 public class MenuController {
 
@@ -26,20 +27,6 @@ public class MenuController {
     // Menu -> VISUALISATION
     @FXML
     public void openCapturePackets() {
-        //TODO ----- delete the text comment
-//        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/VisualisationWindow.fxml"));
-//        Pane pane = null;
-//
-//        try {
-//            pane = loader.load();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        VisualisationController visualisationController = loader.getController();
-//        visualisationController.setMainController(mainController);
-//        mainController.setWindow(pane);
-
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/resources/SelectDeviceWindow.fxml"));
         Pane pane = null;
 
@@ -92,8 +79,7 @@ public class MenuController {
     // Menu -> EXIT
     @FXML
     public void openExit() {
-
-        Platform.exit();
+        System.exit(ABORT);
     }
 
     public void setMainController(MainController mainController) {
@@ -102,7 +88,7 @@ public class MenuController {
     }
 
     public void handleClose(MouseEvent dragEvent) {
-        System.exit(0);
+        System.exit(ABORT);
     }
 
 }

@@ -22,24 +22,24 @@
                <font>
                   <Font name="System Bold" size="25.0" />
                </font></Button>
-            <TextArea fx:id="textAreaOutput" layoutX="18.0" layoutY="254.0" opacity="0.85" prefHeight="473.0" prefWidth="668.0" style="-fx-background-color: #E45652;" wrapText="true" />
+            <TextArea fx:id="textAreaOutput" layoutX="18.0" layoutY="427.0" opacity="0.85" prefHeight="300.0" prefWidth="668.0" style="-fx-background-color: #E45652;" wrapText="true" />
             <Label fx:id="closeLabel" layoutX="968.0" layoutY="7.0" onMouseClicked="#mouse_handleClose" prefHeight="8.0" prefWidth="7.0" text="X" textFill="#b53131">
                <font>
                   <Font name="System Bold" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="35.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToPreviousWindow" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="&lt; BACK">
+            <Button fx:id="backButton" layoutX="35.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToPreviousWindow" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <TextArea fx:id="textAreaInfo" layoutX="697.0" layoutY="254.0" opacity="0.75" prefHeight="473.0" prefWidth="289.0" wrapText="true" />
-            <Button fx:id="savePacketCapture" layoutX="364.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_savePackets" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #e45652;" text="SAVE" textFill="WHITE">
+            <TextArea fx:id="textAreaInfo" layoutX="697.0" layoutY="427.0" opacity="0.75" prefHeight="300.0" prefWidth="289.0" wrapText="true" />
+            <Button fx:id="savePacketCapture" layoutX="364.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_savePackets" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #e45652;" text="ZAPISZ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Button fx:id="loadPacketCapture" layoutX="495.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_loadPackets" prefHeight="50.0" prefWidth="120.0" text="LOAD" textFill="#e45652">
+            <Button fx:id="loadPacketCapture" layoutX="495.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_loadPackets" prefHeight="50.0" prefWidth="120.0" text="ZAŁADUJ" textFill="#e45652">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -67,36 +67,36 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </ToggleButton>
-            <Label fx:id="filtersLabel" alignment="CENTER" layoutX="720.0" layoutY="5.0" prefHeight="35.0" prefWidth="120.0" text="FILTERS" textFill="WHITE">
+            <Label fx:id="filtersLabel" alignment="CENTER" layoutX="720.0" layoutY="5.0" prefHeight="35.0" prefWidth="120.0" text="FILTRY" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font></Label>
-            <ToggleButton fx:id="enableButton" layoutX="651.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_enableButtonFilter" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #E45652;" text="ENABLE" textFill="WHITE">
+            <ToggleButton fx:id="enableButton" layoutX="651.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_enableButtonFilter" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #E45652;" text="ODBLOKUJ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </ToggleButton>
-            <ToggleButton fx:id="disableButton" layoutX="784.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_disableButtonFilter" prefHeight="50.0" prefWidth="120.0" text="DISABLE">
+            <ToggleButton fx:id="disableButton" layoutX="784.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_disableButtonFilter" prefHeight="50.0" prefWidth="120.0" text="ZABLOKUJ">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="backToMenuButton" layoutX="841.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="43.0" prefWidth="123.0" style="-fx-background-color: #F5DEB3;" text="MENU">
+            <Button fx:id="backToMenuButton" layoutX="841.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="MENU">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Label fx:id="filtersLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="5.0" prefHeight="35.0" prefWidth="144.0" text="FILE" textFill="WHITE">
+            <Label fx:id="filtersLabel1" alignment="CENTER" contentDisplay="CENTER" layoutX="409.0" layoutY="5.0" prefHeight="35.0" prefWidth="144.0" text="PLIKI" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="statusText" alignment="CENTER" editable="false" layoutX="18.0" layoutY="43.0" prefHeight="65.0" prefWidth="308.0" style="-fx-background-color: #20120F;" text="Press START">
+            <TextField fx:id="statusText" alignment="CENTER" editable="false" layoutX="13.0" layoutY="43.0" prefHeight="65.0" prefWidth="331.0" style="-fx-background-color: #20120F;" text="Naciśnij START">
                <font>
-                  <Font name="System Bold" size="30.0" />
+                  <Font name="System Bold" size="27.0" />
                </font>
             </TextField>
-            <Button fx:id="clearTextButton" layoutX="597.0" layoutY="727.0" mnemonicParsing="false" onAction="#action_clearText" opacity="0.66" style="-fx-background-color: #E45652;" text="CLEAR" textFill="WHITE">
+            <Button fx:id="clearTextButton" layoutX="570.0" layoutY="727.0" mnemonicParsing="false" onAction="#action_clearText" opacity="0.66" style="-fx-background-color: #E45652;" text="WYCZYŚĆ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -146,12 +146,14 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="630.0" layoutY="115.0" text="PORTS" textFill="#ff3362">
+            <Label layoutX="630.0" layoutY="115.0" text="PORTY" textFill="#ff3362">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
             <Label layoutX="365.0" layoutY="128.0" prefHeight="21.0" prefWidth="600.0" text="                                                                                                                                                 " textFill="WHITE" underline="true" />
+            <TextArea fx:id="textAreaFrame" layoutX="18.0" layoutY="252.0" prefHeight="164.0" prefWidth="480.0" wrapText="true" />
+            <TextArea fx:id="textAreaEth" layoutX="507.0" layoutY="252.0" prefHeight="164.0" prefWidth="480.0" />
          </children>
       </Pane>
    </children>

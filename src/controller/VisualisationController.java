@@ -1,13 +1,14 @@
 package controller;
 
 import controller.Threads.CaptureThread;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.jnetpcap.PcapIf;
@@ -36,6 +37,10 @@ public class VisualisationController extends Component {
     private Button clearTextButton;
     @FXML
     private TextArea textAreaOutput;
+    @FXML
+    private TextArea textAreaFrame;
+    @FXML
+    private TextArea textAreaEth;
     @FXML
     private TextArea textAreaInfo;
     @FXML
@@ -96,19 +101,18 @@ public class VisualisationController extends Component {
 
     //------------------------------------------------------------------------------------------------------------------
     public synchronized void action_StartCapturePacket(ActionEvent actionEvent) {
-        textAreaInfo.setText(" ");
-        textAreaOutput.setText(" ");
+        textAreaInfo.setText("");
+        textAreaOutput.setText("");
         startCaptureButton.setDisable(true);
         stopCaptureButton.setVisible(true);
         stopCaptureButton.setDisable(false);
 
         running.set(true);
-        captureThread = new CaptureThread(textAreaOutput, textAreaInfo, amountPacket, errbuf, nameInterface, this);
-        captureThread.start();
+        captureThread = new CaptureThread(textAreaFrame, textAreaEth, textAreaOutput, textAreaInfo, amountPacket, errbuf, nameInterface, this);
+        Platform.runLater( () -> captureThread.start());
 
         statusText.clear();
-        statusText.setPromptText(" CAPTURING... ");
-
+        statusText.setPromptText(" PRZECHWYTYWANIE... ");
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -117,13 +121,15 @@ public class VisualisationController extends Component {
 
         startCaptureButton.setDisable(false);
         stopCaptureButton.setDisable(true);
-        textAreaInfo.appendText("\n>>> Zatrzynano przechwytywanie");
+//        textAreaInfo.appendText("\n>>> Zatrzynano przechwytywanie");
+
         statusText.clear();
-        statusText.setPromptText(" CAPTURE STOPPED ");
+        statusText.setPromptText(" ZATRZYMANO ");
         captureThread.stopAnimationTimer();
+        captureThread.interrupt();
 
         // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
-        JOptionPane.showMessageDialog(this, "Capture of packets is STOPPED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Przechwytywanie pakietów jest zatrzymane.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -153,10 +159,10 @@ public class VisualisationController extends Component {
             out.println(packetCapture);
 
             out.close();
-            JOptionPane.showMessageDialog(null, "Packet SAVED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Zapisano przechwycone pakiety.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR! Could not SAVE packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ERROR! Nie można zapisać pakietów.", "INFORMATION MESSAGE", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -171,10 +177,10 @@ public class VisualisationController extends Component {
             }
             in.close();
 
-            JOptionPane.showMessageDialog(null, "Packets LOADED.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Załadowano pakiety.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR! Could not LOAD packets.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "ERROR! Nie można załadować pliku z pakietami.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -185,17 +191,10 @@ public class VisualisationController extends Component {
         stopCaptureButton.setDisable(true);
         savePacketCapture.setDisable(true);
 
+        listener_filtersButton();
         listener_clearText();
         disableButtonFilter();
 
-        listener_filtersButton();
-
-        //        if(enableButton.isSelected()) {
-//            if(portSecial.isSelected()) {
-//                String PORT = portSpecialText.getText();
-//                captureThread.setFiler
-//            }
-//        }
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -260,9 +259,8 @@ public class VisualisationController extends Component {
     // LABEL (X) - zamknięcie całej aplikacji
     @FXML
     public void mouse_handleClose(MouseEvent dragEvent) {
-        System.exit(0);
+        System.exit(ABORT);
     }
-
     //------------------------------------------------------------------------------------------------------------------
     // BUTTON - powrót do menu
     @FXML

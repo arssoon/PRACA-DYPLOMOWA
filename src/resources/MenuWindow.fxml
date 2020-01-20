@@ -16,17 +16,17 @@
                   <Font name="Times New Roman Bold" size="38.0" />
                </font>
             </Button>
-            <Button fx:id="helpButton" layoutX="54.0" layoutY="258.0" mnemonicParsing="false" onAction="#openHelp" prefHeight="70.0" prefWidth="350.0" style="-fx-background-color: #E45652;" text="HELP" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="helpButton" layoutX="54.0" layoutY="258.0" mnemonicParsing="false" onAction="#openHelp" prefHeight="70.0" prefWidth="350.0" style="-fx-background-color: #E45652;" text="POMOC" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Times New Roman Bold" size="38.0" />
                </font>
             </Button>
-            <Button fx:id="exit" layoutX="104.0" layoutY="453.0" mnemonicParsing="false" onAction="#openExit" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="EXIT" textFill="WHITE">
+            <Button fx:id="exit" layoutX="104.0" layoutY="453.0" mnemonicParsing="false" onAction="#openExit" prefHeight="70.0" prefWidth="250.0" style="-fx-background-color: #E45652;" text="WYJŚCIE" textFill="WHITE">
                <font>
                   <Font name="Times New Roman Bold" size="38.0" />
                </font>
             </Button>
-            <Button fx:id="aboutButton" layoutX="79.0" layoutY="355.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="70.0" prefWidth="300.0" style="-fx-background-color: #E45652;" text="ABOUT" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="aboutButton" layoutX="79.0" layoutY="355.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="70.0" prefWidth="300.0" style="-fx-background-color: #E45652;" text="O MNIE" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
                   <Font name="Times New Roman Bold" size="38.0" />
                </font>
@@ -43,12 +43,12 @@
             <Image url="@../images/background.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="77.0" layoutY="240.0" prefHeight="208.0" prefWidth="387.0" text="Welcome of a System for Visualizing Data" textFill="WHITE" wrapText="true">
+      <Label layoutX="77.0" layoutY="240.0" prefHeight="160.0" prefWidth="435.0" text="Witam w systemie do wizualizacji danych" textFill="WHITE" wrapText="true">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Button fx:id="letsStartButton" layoutX="160.0" layoutY="431.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="35.0" prefWidth="181.0" style="-fx-background-color: #E45652 #E45652;" text="Let's start" textFill="WHITE">
+      <Button fx:id="letsStartButton" layoutX="181.0" layoutY="419.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="35.0" prefWidth="181.0" style="-fx-background-color: #E45652 #E45652;" text="Zaczynajmy ..." textFill="WHITE">
          <font>
             <Font name="System Bold" size="17.0" />
          </font>

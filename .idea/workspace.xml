@@ -6,21 +6,31 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="part of filters is done">
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="filters is done">
       <change afterPath="$PROJECT_DIR$/.idea/libraries/lib.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/PracaDyplomowa.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/VisualisationController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/resources/MainWindow.fxml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/pcap4j_core_1_7_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/PracaDyplomowa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/PracaDyplomowa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PracaDyplomowa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/PracaDyplomowa.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/MenuController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/MenuController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/VisualisationController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/controller/VisualisationController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/MenuWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/MenuWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/VisualisationWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PracaDyplomowa/resources/VisualisationWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/AboutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AboutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/HelpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/HelpController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/NumberPacketsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/NumberPacketsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SelectDeviceController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SelectDeviceController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/Threads/CaptureThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/Threads/CaptureThread.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/VisualisationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/VisualisationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/AboutWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/AboutWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/HelpWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/HelpWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/MenuWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/NumberPacketsWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/NumberPacketsWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/resources/SelectDeviceWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/SelectDeviceWindow.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" afterDir="false" />
     </list>
     <list id="6fc8ccc1-27fe-4a3d-8190-b720b1d7c207" name="CapturePackets" comment="Today is 10.01.2020" />
@@ -105,17 +115,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="472">
-              <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+            <state relative-caret-position="272">
+              <caret line="110" column="70" selection-start-line="110" selection-start-column="70" selection-end-line="110" selection-end-column="70" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#9474#9475#0" expanded="true" />
-                <element signature="e#9740#9741#0" expanded="true" />
-                <element signature="e#10011#10012#0" expanded="true" />
-                <element signature="e#11490#11491#0" expanded="true" />
-                <element signature="e#11712#11713#0" expanded="true" />
-                <element signature="e#11920#11921#0" expanded="true" />
-                <element signature="e#12454#12455#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -124,12 +127,12 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/Threads/CaptureThread.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="146" column="47" selection-start-line="146" selection-start-column="47" selection-end-line="146" selection-end-column="47" />
+            <state relative-caret-position="23">
+              <caret line="142" column="5" lean-forward="true" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#5357#5358#0" expanded="true" />
-                <element signature="e#5385#5386#0" expanded="true" />
+                <element signature="e#4615#4616#0" expanded="true" />
+                <element signature="e#4643#4644#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,6 +172,9 @@
       <find>udp</find>
       <find>Udp</find>
       <find>source</find>
+      <find>setText</find>
+      <find>ABORT</find>
+      <find>obser</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -206,9 +212,6 @@
         <option value="$PROJECT_DIR$/src/resources/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/resources/MenuWindow.fxml" />
         <option value="$PROJECT_DIR$/src/resources/HelpWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/resources/AboutWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/controller/AboutController.java" />
-        <option value="$PROJECT_DIR$/src/controller/HelpController.java" />
         <option value="$PROJECT_DIR$/PracaDyplomowa.iml" />
         <option value="$PROJECT_DIR$/src/controller/CaptureTask.java" />
         <option value="$PROJECT_DIR$/src/controller/PacketSniffer.java" />
@@ -226,11 +229,14 @@
         <option value="$PROJECT_DIR$/src/resources/NumberPacketsWindow.fxml" />
         <option value="$PROJECT_DIR$/src/fx/Main.java" />
         <option value="$PROJECT_DIR$/src/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/controller/SelectDeviceController.java" />
-        <option value="$PROJECT_DIR$/src/controller/NumberPacketsController.java" />
         <option value="$PROJECT_DIR$/src/resources/VisualisationWindow.fxml" />
-        <option value="$PROJECT_DIR$/src/controller/VisualisationController.java" />
         <option value="$PROJECT_DIR$/src/controller/MenuController.java" />
+        <option value="$PROJECT_DIR$/src/controller/NumberPacketsController.java" />
+        <option value="$PROJECT_DIR$/src/controller/SelectDeviceController.java" />
+        <option value="$PROJECT_DIR$/src/resources/AboutWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/controller/AboutController.java" />
+        <option value="$PROJECT_DIR$/src/controller/HelpController.java" />
+        <option value="$PROJECT_DIR$/src/controller/VisualisationController.java" />
         <option value="$PROJECT_DIR$/src/controller/Threads/CaptureThread.java" />
       </list>
     </option>
@@ -243,10 +249,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-9" />
-    <option name="y" value="36" />
-    <option name="width" value="978" />
-    <option name="height" value="1050" />
+    <option name="x" value="2132" />
+    <option name="y" value="250" />
+    <option name="width" value="784" />
+    <option name="height" value="840" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectReloadState">
@@ -320,6 +326,11 @@
             <path>
               <item name="PracaDyplomowa" type="58d84e3e:PackageViewProjectNode" />
               <item name="PracaDyplomowa" type="616d4139:PackageViewModuleNode" />
+              <item name="fx" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="PracaDyplomowa" type="58d84e3e:PackageViewProjectNode" />
+              <item name="PracaDyplomowa" type="616d4139:PackageViewModuleNode" />
               <item name="resources" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
@@ -351,7 +362,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="dynamic.classpath" value="false" />
     <property name="extract.method.default.visibility" value="public" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/fx/META-INF" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -359,7 +370,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -543,7 +554,10 @@
       <workItem from="1579202689103" duration="20086000" />
       <workItem from="1579248772696" duration="6233000" />
       <workItem from="1579266877125" duration="59385000" />
-      <workItem from="1579372594856" duration="18919000" />
+      <workItem from="1579372594856" duration="19104000" />
+      <workItem from="1579433473520" duration="7997000" />
+      <workItem from="1579449976451" duration="593000" />
+      <workItem from="1579461093030" duration="20980000" />
     </task>
     <task id="LOCAL-00001" summary="Created graphical design and capturing packets">
       <created>1578593820100</created>
@@ -643,11 +657,18 @@
       <option name="project" value="LOCAL" />
       <updated>1579368787219</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="filters is done">
+      <created>1579395520995</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1579395520995</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="405349000" />
+    <option name="totallyTimeSpent" value="435104000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -659,11 +680,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="23" width="1550" height="848" extended-state="6" />
+    <frame x="1912" y="217" width="1376" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.36893204" />
-      <window_info id="Structure" order="1" weight="0.21359223" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.04863222" />
+      <window_info id="Structure" order="1" weight="0.21610738" />
       <window_info id="Favorites" order="2" weight="0.3295302" />
       <window_info id="Designer" order="3" />
       <window_info id="Image Layers" order="4" />
@@ -671,7 +692,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32960895" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23603351" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.14653784" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3058659" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -682,7 +703,7 @@
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Profiler" order="11" />
       <window_info anchor="bottom" id="Event Log" order="12" weight="0.3282123" />
-      <window_info anchor="bottom" id="Messages" order="13" weight="0.32909605" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.3282123" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="15" />
       <window_info anchor="bottom" id="Terminal" order="16" weight="0.3282123" />
@@ -768,7 +789,8 @@
     <MESSAGE value="new face an application -- correcttion 2" />
     <MESSAGE value="Correct thread and show capture packet without filters." />
     <MESSAGE value="part of filters is done" />
-    <option name="LAST_COMMIT_MESSAGE" value="part of filters is done" />
+    <MESSAGE value="filters is done" />
+    <option name="LAST_COMMIT_MESSAGE" value="filters is done" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
@@ -848,9 +870,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/controller/PacketSniffer.java" />
-    <entry file="file://$PROJECT_DIR$/src/controller/TextClass.java" />
-    <entry file="file://$PROJECT_DIR$/src/controller/CaptureThread2.java" />
     <entry file="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-core-1.7.3.jar!/org/pcap4j/util/NifSelector.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="202">
@@ -872,13 +891,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/PacketRec.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/rt.jar!/java/lang/Thread.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="80" column="30" selection-start-line="80" selection-start-column="30" selection-end-line="80" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/ext/jnetpcap.jar!/org/jnetpcap/util/PcapPacketArrayList.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="381">
@@ -954,33 +966,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/AboutWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/AboutController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="11" selection-end-line="35" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#703#704#0" expanded="true" />
-            <element signature="e#755#756#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/MainWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="11" selection-start-line="7" selection-start-column="11" selection-end-line="7" selection-end-column="11" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/ext/jfxrt.jar!/javafx/scene/Scene.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -997,23 +989,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/VariableFxml.java" />
-    <entry file="file://$PROJECT_DIR$/src/fx/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="40" column="26" lean-forward="true" selection-start-line="40" selection-start-column="26" selection-end-line="40" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/SelectDeviceWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/ext/jfxrt.jar!/javafx/scene/Node.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1094,37 +1076,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="49" column="32" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#291#292#0" expanded="true" />
-            <element signature="e#323#324#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/SelectDeviceController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3522#3523#0" expanded="true" />
-            <element signature="e#3573#3574#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/NumberPacketsWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="35" column="140" selection-start-line="35" selection-start-column="140" selection-end-line="35" selection-end-column="140" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/ext/jnetpcap.jar!/org/jnetpcap/packet/PcapPacket.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -1162,13 +1120,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/NumberPacketsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="32">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/Downloads/Biblioteki jar - JAVA/pcap4j/pcap4j-core-1.7.3.jar!/org/pcap4j/packet/DnsPacket.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -1201,49 +1152,133 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/VisualisationWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
+    <entry file="file://$PROJECT_DIR$/src/resources/MenuWindow.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="36" column="37" lean-forward="true" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+        <state relative-caret-position="165">
+          <caret line="23" column="100" selection-start-line="23" selection-start-column="100" selection-end-line="23" selection-end-column="100" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="30" column="24" lean-forward="true" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#291#292#0" expanded="true" />
+            <element signature="e#323#324#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
+    <entry file="file://$PROJECT_DIR$/src/fx/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="29" column="14" lean-forward="true" selection-start-line="29" selection-start-column="14" selection-end-line="40" selection-end-column="14" />
+        <state relative-caret-position="278">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/rt.jar!/java/lang/Runnable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="9" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_212/jre/lib/rt.jar!/java/lang/Thread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="213" column="26" selection-start-line="213" selection-start-column="26" selection-end-line="213" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/NumberPacketsController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="472">
-          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+          <caret line="43" selection-start-line="43" selection-end-line="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9474#9475#0" expanded="true" />
-            <element signature="e#9740#9741#0" expanded="true" />
-            <element signature="e#10011#10012#0" expanded="true" />
-            <element signature="e#11490#11491#0" expanded="true" />
-            <element signature="e#11712#11713#0" expanded="true" />
-            <element signature="e#11920#11921#0" expanded="true" />
-            <element signature="e#12454#12455#0" expanded="true" />
+            <element signature="e#1785#1786#0" expanded="true" />
+            <element signature="e#1819#1820#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/SelectDeviceController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="137">
+          <caret line="43" column="22" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/AboutWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="20" column="107" selection-start-line="20" selection-start-column="107" selection-end-line="20" selection-end-column="107" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/AboutController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="30" column="10" lean-forward="true" selection-start-line="30" selection-start-column="10" selection-end-line="30" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/HelpController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="25" column="86" selection-start-line="25" selection-start-column="86" selection-end-line="25" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/VisualisationWindow.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="154" column="42" selection-start-line="154" selection-start-column="29" selection-end-line="154" selection-end-column="42" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/VisualisationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="110" column="70" selection-start-line="110" selection-start-column="70" selection-end-line="110" selection-end-column="70" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/Threads/CaptureThread.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="146" column="47" selection-start-line="146" selection-start-column="47" selection-end-line="146" selection-end-column="47" />
+        <state relative-caret-position="23">
+          <caret line="142" column="5" lean-forward="true" selection-start-line="142" selection-start-column="5" selection-end-line="142" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5357#5358#0" expanded="true" />
-            <element signature="e#5385#5386#0" expanded="true" />
+            <element signature="e#4615#4616#0" expanded="true" />
+            <element signature="e#4643#4644#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1255,10 +1290,10 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="artifact" />
-              <type id="library" />
-              <type id="jpa-descriptors" />
               <type id="javaee-facet-resources" />
+              <type id="library" />
+              <type id="artifact" />
+              <type id="jpa-descriptors" />
             </show-content>
           </artifact-editor>
           <last-edited>PracaDyplomowa</last-edited>

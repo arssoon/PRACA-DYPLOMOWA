@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.jnetpcap.protocol.sigtran.SctpChunk.ABORT;
+
 public class SelectDeviceController {
 
     MainController mainController;
@@ -113,7 +115,7 @@ public class SelectDeviceController {
     }
 
     public void mouse_handleClose(MouseEvent dragEvent) {
-        System.exit(0);
+        System.exit(ABORT);
     }
 
     @FXML

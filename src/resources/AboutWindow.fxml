@@ -8,9 +8,12 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AboutController">
    <children>
-      <StackPane layoutX="200.0" layoutY="200.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
+      <StackPane layoutX="210.0" layoutY="210.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
          <children>
-            <Label fx:id="aboutLabel" prefHeight="207.0" prefWidth="528.0" text="This application was written by Arkadiusz Sobol. It is forbidden to spread this application on the internet and copy it." textFill="WHITE" wrapText="true" />
+            <Label fx:id="aboutLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="207.0" prefWidth="528.0" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font size="22.0" />
+               </font></Label>
          </children>
       </StackPane>
       <Label fx:id="closeLabel" layoutX="962.0" layoutY="14.0" onMouseClicked="#handleClose" prefHeight="0.0" prefWidth="0.0" text="X" textFill="#b23131">
@@ -18,10 +21,15 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="807.0" layoutY="704.0" mnemonicParsing="false" onAction="#backToMenu" style="-fx-background-color: #E45652;" text="BACK" textFill="WHITE">
+      <Button fx:id="backButton" layoutX="44.0" layoutY="718.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
          <font>
-            <Font name="System Bold" size="17.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <Label alignment="CENTER" layoutX="64.0" layoutY="36.0" prefHeight="107.0" prefWidth="892.0" text="CAPTURE PACKETS">
+         <font>
+            <Font size="86.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
