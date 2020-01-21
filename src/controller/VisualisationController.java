@@ -38,11 +38,9 @@ public class VisualisationController extends Component {
     @FXML
     private TextArea textAreaOutput;
     @FXML
-    private TextArea textAreaFrame;
-    @FXML
-    private TextArea textAreaEth;
-    @FXML
     private TextArea textAreaInfo;
+    @FXML
+    private TextArea textAreaPacket;
     @FXML
     private TextField statusText;
     // Start & stop
@@ -97,6 +95,7 @@ public class VisualisationController extends Component {
         errbuf = new StringBuilder();
         nowSelectedButton = new ToggleButton();
         oldSelectedButton = new ToggleButton();
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -108,7 +107,7 @@ public class VisualisationController extends Component {
         stopCaptureButton.setDisable(false);
 
         running.set(true);
-        captureThread = new CaptureThread(textAreaFrame, textAreaEth, textAreaOutput, textAreaInfo, amountPacket, errbuf, nameInterface, this);
+        captureThread = new CaptureThread(textAreaOutput, textAreaInfo, textAreaPacket, amountPacket, errbuf, nameInterface, this);
         Platform.runLater( () -> captureThread.start());
 
         statusText.clear();
@@ -118,18 +117,13 @@ public class VisualisationController extends Component {
     //------------------------------------------------------------------------------------------------------------------
     public synchronized void action_StopCapturePacket() {
         running.set(false);
-
         startCaptureButton.setDisable(false);
         stopCaptureButton.setDisable(true);
-//        textAreaInfo.appendText("\n>>> Zatrzynano przechwytywanie");
 
         statusText.clear();
         statusText.setPromptText(" ZATRZYMANO ");
         captureThread.stopAnimationTimer();
         captureThread.interrupt();
-
-        // INFORMACJA O ZATRZYMANIU PRZECHWYTYWANIA
-        JOptionPane.showMessageDialog(this, "Przechwytywanie pakietów jest zatrzymane.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -182,6 +176,7 @@ public class VisualisationController extends Component {
             e.printStackTrace();
             JOptionPane.showMessageDialog(null, "ERROR! Nie można załadować pliku z pakietami.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -220,6 +215,7 @@ public class VisualisationController extends Component {
         popButton.setDisable(true);
         ftpButton.setDisable(true);
         arpButton.setDisable(true);
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -301,6 +297,12 @@ public class VisualisationController extends Component {
     //------------------------------------------------------------------------------------------------------------------
     public void setAmountPacket(int amountPacket) {
         this.amountPacket = amountPacket;
+        if(amountPacket > 0) {
+            textAreaPacket.setText("\t    CEL: " + amountPacket);
+        }
+        else {
+            textAreaPacket.setText("Przechwytywanie NA ŻYWO");
+        }
     }
 
     //------------------------------------------------------------------------------------------------------------------

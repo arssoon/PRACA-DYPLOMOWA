@@ -22,7 +22,7 @@
                <font>
                   <Font name="System Bold" size="25.0" />
                </font></Button>
-            <TextArea fx:id="textAreaOutput" layoutX="18.0" layoutY="427.0" opacity="0.85" prefHeight="300.0" prefWidth="668.0" style="-fx-background-color: #E45652;" wrapText="true" />
+            <TextArea fx:id="textAreaOutput" editable="false" layoutX="12.0" layoutY="252.0" opacity="0.8" prefHeight="467.0" prefWidth="721.0" style="-fx-background-color: #E45652;" wrapText="true" />
             <Label fx:id="closeLabel" layoutX="968.0" layoutY="7.0" onMouseClicked="#mouse_handleClose" prefHeight="8.0" prefWidth="7.0" text="X" textFill="#b53131">
                <font>
                   <Font name="System Bold" size="29.0" />
@@ -33,7 +33,10 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <TextArea fx:id="textAreaInfo" layoutX="697.0" layoutY="427.0" opacity="0.75" prefHeight="300.0" prefWidth="289.0" wrapText="true" />
+            <TextArea fx:id="textAreaPacket" editable="false" layoutX="740.0" layoutY="280.0" opacity="0.75" prefHeight="65.0" prefWidth="248.0" scrollTop="5.0" wrapText="true">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font></TextArea>
             <Button fx:id="savePacketCapture" layoutX="364.0" layoutY="50.0" mnemonicParsing="false" onAction="#action_savePackets" prefHeight="50.0" prefWidth="120.0" style="-fx-background-color: #e45652;" text="ZAPISZ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
@@ -96,7 +99,7 @@
                   <Font name="System Bold" size="27.0" />
                </font>
             </TextField>
-            <Button fx:id="clearTextButton" layoutX="570.0" layoutY="727.0" mnemonicParsing="false" onAction="#action_clearText" opacity="0.66" style="-fx-background-color: #E45652;" text="WYCZYŚĆ" textFill="WHITE">
+            <Button fx:id="clearTextButton" layoutX="630.0" layoutY="719.0" mnemonicParsing="false" onAction="#action_clearText" opacity="0.66" style="-fx-background-color: #E45652;" text="WYCZYŚĆ" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -152,8 +155,21 @@
                </font>
             </Label>
             <Label layoutX="365.0" layoutY="128.0" prefHeight="21.0" prefWidth="600.0" text="                                                                                                                                                 " textFill="WHITE" underline="true" />
-            <TextArea fx:id="textAreaFrame" layoutX="18.0" layoutY="252.0" prefHeight="164.0" prefWidth="480.0" wrapText="true" />
-            <TextArea fx:id="textAreaEth" layoutX="507.0" layoutY="252.0" prefHeight="164.0" prefWidth="480.0" />
+            <Label alignment="CENTER" layoutX="755.0" layoutY="233.0" prefHeight="65.0" prefWidth="231.0" text="ILOŚĆ PAKIETÓW" textFill="#ffa9a9">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="752.0" layoutY="342.0" prefHeight="65.0" prefWidth="231.0" text="POWIADOMIENIA" textFill="#ff9191">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="textAreaInfo" editable="false" layoutX="740.0" layoutY="400.0" opacity="0.75" prefHeight="318.0" prefWidth="248.0" wrapText="true">
+               <font>
+                  <Font name="System Italic" size="17.0" />
+               </font>
+            </TextArea>
          </children>
       </Pane>
    </children>

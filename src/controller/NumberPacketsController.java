@@ -51,6 +51,7 @@ public class NumberPacketsController extends Component {
         visualisationController.setNumberChoose(numberChoose);
         visualisationController.setErrbuf(errbuf);
         visualisationController.setInterfaceDevice(interfaceDevice);
+
     }
 
     @FXML
