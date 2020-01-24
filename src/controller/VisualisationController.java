@@ -2,6 +2,7 @@ package controller;
 
 import controller.Threads.CaptureThread;
 import javafx.application.Platform;
+import javafx.collections.ListChangeListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,9 +14,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import org.jnetpcap.PcapIf;
 
-import javax.swing.*;
 import java.awt.*;
-import java.io.*;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -36,9 +37,17 @@ public class VisualisationController extends Component {
     @FXML
     private Button clearTextButton;
     @FXML
-    private TextArea textAreaOutput;
+    private TableColumn frameColumnId;
     @FXML
-    private TextArea textAreaInfo;
+    private TableColumn ethernetColumnId;
+    @FXML
+    private TableColumn ipColumnId;
+    @FXML
+    private TableColumn transportColumnId;
+    @FXML
+    private TableColumn filtrColumnId;
+    @FXML
+    private TableView<Frame> tableView;
     @FXML
     private TextArea textAreaPacket;
     @FXML
@@ -99,16 +108,16 @@ public class VisualisationController extends Component {
     }
 
     //------------------------------------------------------------------------------------------------------------------
-    public synchronized void action_StartCapturePacket(ActionEvent actionEvent) {
-        textAreaInfo.setText("");
-        textAreaOutput.setText("");
+    public synchronized void action_StartCapturePacket(ActionEvent actionEvent) throws FileNotFoundException {
         startCaptureButton.setDisable(true);
         stopCaptureButton.setVisible(true);
         stopCaptureButton.setDisable(false);
 
         running.set(true);
-        captureThread = new CaptureThread(textAreaOutput, textAreaInfo, textAreaPacket, amountPacket, errbuf, nameInterface, this);
-        Platform.runLater( () -> captureThread.start());
+        captureThread = new CaptureThread(tableView, frameColumnId, ethernetColumnId,
+                ipColumnId, transportColumnId, filtrColumnId,
+                textAreaPacket, amountPacket, errbuf, nameInterface, this);
+        Platform.runLater(() -> captureThread.start());
 
         statusText.clear();
         statusText.setPromptText(" PRZECHWYTYWANIE... ");
@@ -122,7 +131,6 @@ public class VisualisationController extends Component {
 
         statusText.clear();
         statusText.setPromptText(" ZATRZYMANO ");
-        captureThread.stopAnimationTimer();
         captureThread.interrupt();
 
     }
@@ -130,53 +138,15 @@ public class VisualisationController extends Component {
 
     //----------------  metoda nasłuchująca pole TextField jaką user wpisał wartość    ----------------------------------
     public void listener_clearText() {
-        textAreaOutput.textProperty().addListener((observable) -> {
-                    if (textAreaOutput.getText().isEmpty()) {
-                        clearTextButton.setVisible(false);
-                        savePacketCapture.setDisable(true);
-                    } else {
-                        clearTextButton.setVisible(true);
-                        savePacketCapture.setDisable(false);
-                    }
-                }
-        );
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    public void action_savePackets(ActionEvent actionEvent) {
-        String packetCapture = textAreaOutput.getText();
-
-        try {
-            PrintStream out = new PrintStream(
-                    new FileOutputStream("PacketCapture.txt"));
-
-            out.println(packetCapture);
-
-            out.close();
-            JOptionPane.showMessageDialog(null, "Zapisano przechwycone pakiety.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR! Nie można zapisać pakietów.", "INFORMATION MESSAGE", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    //------------------------------------------------------------------------------------------------------------------
-    public void action_loadPackets(ActionEvent actionEvent) {
-        String packetCapture;
-
-        try {
-            BufferedReader in = new BufferedReader(new FileReader("PacketCapture.txt"));
-            while ((packetCapture = in.readLine()) != null) {
-                textAreaOutput.appendText(packetCapture + "\n");
+        tableView.getItems().addListener((ListChangeListener<Frame>) observable -> {
+            if (tableView.getItems().isEmpty()) {
+                clearTextButton.setVisible(false);
+                savePacketCapture.setDisable(true);
+            } else {
+                clearTextButton.setVisible(true);
+                savePacketCapture.setDisable(false);
             }
-            in.close();
-
-            JOptionPane.showMessageDialog(null, "Załadowano pakiety.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(null, "ERROR! Nie można załadować pliku z pakietami.", "INFORMATION MESSAGE", JOptionPane.INFORMATION_MESSAGE);
-        }
-
+        });
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -248,7 +218,8 @@ public class VisualisationController extends Component {
 
     //------------------------------------------------------------------------------------------------------------------
     public void action_clearText(ActionEvent actionEvent) {
-        textAreaOutput.setText("");
+        tableView.getItems().clear();
+
     }
 
     //------------------------------------------------------------------------------------------------------------------
@@ -257,6 +228,7 @@ public class VisualisationController extends Component {
     public void mouse_handleClose(MouseEvent dragEvent) {
         System.exit(ABORT);
     }
+
     //------------------------------------------------------------------------------------------------------------------
     // BUTTON - powrót do menu
     @FXML
@@ -297,12 +269,12 @@ public class VisualisationController extends Component {
     //------------------------------------------------------------------------------------------------------------------
     public void setAmountPacket(int amountPacket) {
         this.amountPacket = amountPacket;
-        if(amountPacket > 0) {
-            textAreaPacket.setText("\t    CEL: " + amountPacket);
-        }
-        else {
-            textAreaPacket.setText("Przechwytywanie NA ŻYWO");
-        }
+//        if(amountPacket > 0) {
+//            textAreaPacket.setText("\t    CEL: " + amountPacket);
+//        }
+//        else {
+//            textAreaPacket.setText("Przechwytywanie NA ŻYWO");
+//        }
     }
 
     //------------------------------------------------------------------------------------------------------------------

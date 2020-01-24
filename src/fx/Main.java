@@ -18,7 +18,7 @@ public class Main extends Application {
         try {
             Scene scene;
             scene = getScene();
-
+            scene.getStylesheets().add("/CSS/style.css");
             stage.setScene(scene);
             stage.initStyle(StageStyle.UNDECORATED);
 
@@ -27,14 +27,12 @@ public class Main extends Application {
             stage.show();
         }
         catch (Exception e) {
-
             System.out.println(e.getMessage());
         }
     }
 
     // Main Method
     public static void main(String[] args) {
-
         launch(args);
     }
 
@@ -45,7 +43,7 @@ public class Main extends Application {
         MainController mainController = loader.getController();
         loader.setController(mainController);
 
-        Scene scene = new Scene(stackPane, 1000, 800);
+        Scene scene = new Scene(stackPane, 1300, 800);
 
         return scene;
     }

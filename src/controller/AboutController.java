@@ -23,7 +23,7 @@ public class AboutController {
 
     @FXML
     private void initialize() {
-        aboutLabel.setText("\t  PRACA DYPLOMOWA\n\n" +
+        aboutLabel.setText("\tPRACA DYPLOMOWA\n\n" +
                 "Nazwa aplikacji -> Capture Packets\n" +
                 "Wykonał -> Arkadiusz Sobol\n" +
                 "Promotor -> Jarosław Wikarek\n\n"

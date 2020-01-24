@@ -8,7 +8,6 @@ import javafx.scene.layout.StackPane;
 import java.io.IOException;
 
 public class MainController {
-
     @FXML
     public StackPane mainStack;
 
