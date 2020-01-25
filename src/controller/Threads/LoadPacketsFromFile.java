@@ -16,6 +16,7 @@ import org.jnetpcap.protocol.tcpip.Udp;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +33,11 @@ public class LoadPacketsFromFile {
     private TableColumn ethernetColumnId;
     private TableColumn ipColumnId;
     private TableColumn transportColumnId;
-    private TableColumn filtrColumnId;
+    private TableColumn filtersColumnId;
     private TableView tableView;
 
     public LoadPacketsFromFile(PcapPacket pcapPacket, Tcp tcp, Udp udp, Icmp icmp, Arp arp, Http http, TableColumn frameColumnId,
-                               TableColumn ethernetColumnId, TableColumn ipColumnId, TableColumn transportColumnId, TableColumn filtrColumnId,
+                               TableColumn ethernetColumnId, TableColumn ipColumnId, TableColumn transportColumnId, TableColumn filtersColumnId,
                                TableView tableView, VisualisationController vController, CaptureThread captureThread
     ) {
         this.pcapPacket = pcapPacket;
@@ -49,89 +50,103 @@ public class LoadPacketsFromFile {
         this.ethernetColumnId = ethernetColumnId;
         this.ipColumnId = ipColumnId;
         this.transportColumnId = transportColumnId;
-        this.filtrColumnId = filtrColumnId;
+        this.filtersColumnId = filtersColumnId;
         this.tableView = tableView;
         this.vController = vController;
         this.captureThread = captureThread;
     }
 
     public void invoke() {
-        String packetCapture;
-        BufferedReader in;
-        boolean ifIp6 = false;
         int line = 0;
         int counterIp = 0;
         int counterTranspotLayer = 0;
-        CaptureWithoutFilters captureWithoutFilters;
 
         List<Frame> listFrame = new ArrayList();
         List<Ethernet> listEthernet = new ArrayList();
         List<Ip> listIp = new ArrayList();
         List<Transport> listTransport = new ArrayList();
-        List<Filtr> listFiltr = new ArrayList();
+        List<Filters> listFilters = new ArrayList();
 
         frameColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("frameName"));
         ethernetColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("ethernetName"));
         ipColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("ipName"));
         transportColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("transportName"));
-        filtrColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("filtrName"));
+        filtersColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("filtersName"));
 
-        ObservableList<Column> contactList;
         try {
-            in = new BufferedReader(new FileReader("PacketCapture.txt"));
+            displayAndLoadPacketsToTable(line, counterIp, counterTranspotLayer, listFrame, listEthernet, listIp, listTransport, listFilters);
 
-            while ((packetCapture = in.readLine()) != null) {
-                //--------------------   FRAME  ---------------------------------------
-                firstLayer(packetCapture, line, listFrame);
-
-                //--------------------   ETHERNET  ---------------------------------------
-                secondLayer(packetCapture, line, listEthernet);
-
-                //--------------------   IP or ARP  ---------------------------------------
-                if (!vController.disableButton.isDisabled() && vController.filtersGroup.getSelectedToggle() == vController.arpButton) {
-                    //--------------------   ARP  ---------------------------------------
-                    if (line > 16 && line < 29) {
-                        listIp.add(new Ip(packetCapture.replaceFirst("Arp: *", "")));
-//                        System.out.println(arp);
-                    } else {
-                        listIp.add(new Ip(""));
-//                        listTransport.add(new Transport(""));
-                    }
-                } else {
-                    captureWithoutFilters = new CaptureWithoutFilters(pcapPacket, tcp, udp, icmp, arp, http, packetCapture, ifIp6, line,
-                            counterIp, counterTranspotLayer, listIp, listTransport, captureThread).invoke();
-                    ifIp6 = captureWithoutFilters.isIfIp6();
-                    counterIp = captureWithoutFilters.getCounterIp();
-                    counterTranspotLayer = captureWithoutFilters.getCounterTranspotLayer();
-
-                }
-                //                --------------------   FILTRY  ---------------------------------------
-                //                if (line > 17 & line < 29) {
-                //
-                //                } else {
-                //                    listFiltr.add(new Filtr(""));
-                //                }
-                line++;
-            }
-
-            for (int j = 0; j < 19; j++) {
-                contactList = FXCollections.observableArrayList(
-                        new Column(listFrame.get(j + 2).getFrameName(),
-                                listEthernet.get(j + 9).getEthernetName(),
-                                listIp.get(j + 19).getIpName(),
-                                listTransport.get(j + 30 + counterIp).getTransportName(),
-                                null
-                        )
-                );
-
-                tableView.getItems().addAll(contactList);
-            }
-
-            in.close();
-        } catch(Exception e){
+        } catch (Exception e) {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //--------------------  loaded Packets and view   ---------------------------------------
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void displayAndLoadPacketsToTable(int line, int counterIp, int counterTranspotLayer, List<Frame> listFrame,
+                                              List<Ethernet> listEthernet, List<Ip> listIp, List<Transport> listTransport, List<Filters> listFilters) throws IOException {
+        String packetCapture;
+        boolean ifIp6 = false;
+        CaptureHigerLayers captureHigerLayers;
+        ObservableList<Column> contactList;
+        BufferedReader in = new BufferedReader(new FileReader("PacketCapture.txt"));
+
+        while ((packetCapture = in.readLine()) != null) {
+            //--------------------   FRAME  ---------------------------------------
+            firstLayer(packetCapture, line, listFrame);
+
+            //--------------------   ETHERNET  ---------------------------------------
+            secondLayer(packetCapture, line, listEthernet);
+
+            //--------------------   IP or ARP  ---------------------------------------
+            if (vController.filtersGroup.getSelectedToggle() == vController.arpButton) {
+                //--------------------   ARP  ---------------------------------------
+                thirdLayer(packetCapture, line, listIp, listTransport, listFilters);
+
+            } else {
+                captureHigerLayers = new CaptureHigerLayers(pcapPacket, tcp, udp, icmp, arp, http, packetCapture,  ifIp6, line,
+                        counterIp, counterTranspotLayer, listIp, listTransport, listFilters, captureThread, vController).invoke();
+                counterIp = captureHigerLayers.getCounterIp();
+                counterTranspotLayer = captureHigerLayers.getCounterTranspotLayer();
+                ifIp6 = captureHigerLayers.isIfIp6();
+            }
+
+            line++;
+
+        }
+
+        for (int j = 0; j < 19; j++) {
+            contactList = FXCollections.observableArrayList(
+                    new Column(listFrame.get(j + 2).getFrameName(),
+                            listEthernet.get(j + 9).getEthernetName(),
+                            listIp.get(j + 19).getIpName(),
+                            listTransport.get(j + 30 + counterIp).getTransportName(),
+                            listFilters.get(j + 50 + counterIp).getFiltersName()
+                    )
+            );
+
+            tableView.getItems().addAll(contactList);
+        }
+        in.close();
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //--------------------  load 3 layer   ---------------------------------------
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void thirdLayer(String packetCapture, int line, List<Ip> listIp, List<Transport> listTransport, List<Filters> listFilters) {
+        if (line > 17 && line < 29) {
+            listIp.add(new Ip(packetCapture.replaceFirst("Arp: *", "")));
+//            System.out.println(arp);
+        } else {
+            listIp.add(new Ip(""));
+            listTransport.add(new Transport(""));
+            listFilters.add(new Filters(""));
+        }
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //--------------------  load 2 layer   ---------------------------------------
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void secondLayer(String packetCapture, int line, List<Ethernet> listEthernet) {
         if (line > 6 && line < 17) {
             listEthernet.add(new Ethernet(packetCapture.replaceFirst("Eth: *", "")));
@@ -141,6 +156,9 @@ public class LoadPacketsFromFile {
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //--------------------  load 1 layer   ---------------------------------------
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private void firstLayer(String packetCapture, int line, List<Frame> listFrame) {
         if (line > 0 && line < 7) {
             listFrame.add(new Frame(packetCapture.replaceFirst("Frame: *", "")));

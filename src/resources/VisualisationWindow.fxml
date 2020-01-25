@@ -153,11 +153,11 @@
             </Label>
             <TableView fx:id="tableView" layoutX="4.0" layoutY="251.0" prefHeight="468.0" prefWidth="1287.0" stylesheets="@../CSS/style.css">
               <columns>
-                <TableColumn fx:id="frameColumnId" prefWidth="260.0" text="FRAME" />
-                <TableColumn fx:id="ethernetColumnId" minWidth="0.0" prefWidth="272.0" text="ETHERNET" />
-                  <TableColumn fx:id="ipColumnId" prefWidth="241.0" text="IP" />
-                  <TableColumn fx:id="transportColumnId" minWidth="0.0" prefWidth="275.0" text="TCP/UDP" />
-                  <TableColumn fx:id="filtrColumnId" prefWidth="277.0" text="FILTR" />
+                <TableColumn fx:id="frameColumnId" prefWidth="260.0" text="FIZYCZNA" />
+                <TableColumn fx:id="ethernetColumnId" minWidth="0.0" prefWidth="272.0" text="ŁĄCZA DANYCH" />
+                  <TableColumn fx:id="ipColumnId" prefWidth="241.0" text="SIECI" />
+                  <TableColumn fx:id="transportColumnId" minWidth="0.0" prefWidth="275.0" text="TRANSPORTOWA" />
+                  <TableColumn fx:id="filtersColumnId" prefWidth="277.0" text="APLIKACJI" />
               </columns>
             </TableView>
          </children>

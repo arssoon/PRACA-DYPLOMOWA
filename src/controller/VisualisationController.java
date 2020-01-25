@@ -45,7 +45,7 @@ public class VisualisationController extends Component {
     @FXML
     private TableColumn transportColumnId;
     @FXML
-    private TableColumn filtrColumnId;
+    private TableColumn filtersColumnId;
     @FXML
     private TableView<Frame> tableView;
     @FXML
@@ -115,7 +115,7 @@ public class VisualisationController extends Component {
 
         running.set(true);
         captureThread = new CaptureThread(tableView, frameColumnId, ethernetColumnId,
-                ipColumnId, transportColumnId, filtrColumnId,
+                ipColumnId, transportColumnId, filtersColumnId,
                 textAreaPacket, amountPacket, errbuf, nameInterface, this);
         Platform.runLater(() -> captureThread.start());
 

@@ -26,7 +26,7 @@ public class CaptureThread extends Thread {
     private TableColumn ethernetColumnId;
     private TableColumn ipColumnId;
     private TableColumn transportColumnId;
-    private TableColumn filtrColumnId;
+    private TableColumn filtersColumnId;
     private TableView tableView;
     private TextArea textAreaPacket;
     public boolean checkPacketUdp;
@@ -35,7 +35,7 @@ public class CaptureThread extends Thread {
 
     public CaptureThread(TableView tableView, TableColumn frameColumnId,
                          TableColumn ethernetColumnId, TableColumn ipColumnId,
-                         TableColumn transportColumnId, TableColumn filtrColumnId,
+                         TableColumn transportColumnId, TableColumn filtersColumnId,
                          TextArea textAreaPacket, int amountPacket,
                          StringBuilder errbuf, String nameDevice,
                          VisualisationController vController
@@ -45,7 +45,7 @@ public class CaptureThread extends Thread {
         this.ethernetColumnId = ethernetColumnId;
         this.ipColumnId = ipColumnId;
         this.transportColumnId = transportColumnId;
-        this.filtrColumnId = filtrColumnId;
+        this.filtersColumnId = filtersColumnId;
         this.textAreaPacket = textAreaPacket;
         this.amountPacket = amountPacket;
         this.errbuf = errbuf;
@@ -86,6 +86,9 @@ public class CaptureThread extends Thread {
                     icmp = new Icmp();
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     capturePackets(packet, tcp, udp, icmp, arp, http);
+                    if(packet.hasHeader(http) ){
+                        System.out.println(http);
+                    }
                     sleepThread();
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 }
@@ -105,12 +108,12 @@ public class CaptureThread extends Thread {
         try {
             if ((vController.disableButton.isDisabled()) || (vController.filtersGroup.getSelectedToggle() == null)) {
                 // ----------------------  TCP  -----------------------------------------------------
-                if ((pcapPacket.hasHeader(tcp))) {
+                if (pcapPacket.hasHeader(tcp)) {
                     checkPacketUdp = false;
                     savePacketsToFile(pcapPacket, tcp, udp, icmp, arp, http);
                     loadPacketsFromFile(pcapPacket, tcp, udp, icmp, arp, http);
                 }
-//                // ----------------------  UDP  -----------------------------------------------------
+                // ----------------------  UDP  -----------------------------------------------------
                 else if (pcapPacket.hasHeader(udp)) {
                     checkPacketUdp = true;
                     savePacketsToFile(pcapPacket, tcp, udp, icmp, arp, http);
@@ -120,6 +123,14 @@ public class CaptureThread extends Thread {
             // ----------------------  Filtrowanie pakietow -----------------------------------------------------
             else {
                 packetFilter(pcapPacket, tcp, udp, http, arp, icmp);
+                //TODO usuń toooooooooooooo \/
+                if (pcapPacket.hasHeader(icmp)) {
+                    System.out.println("-------------klasa głowna---------------" + icmp);
+                }
+                if (pcapPacket.hasHeader(arp)) {
+                    System.out.println("-------------klasa głowna---------------" + arp);
+                }
+
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -156,8 +167,6 @@ public class CaptureThread extends Thread {
         } finally {
             out.close();
         }
-
-
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -165,20 +174,10 @@ public class CaptureThread extends Thread {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public void loadPacketsFromFile(PcapPacket pcapPacket, Tcp tcp, Udp udp, Icmp icmp, Arp arp, Http http) {
         new LoadPacketsFromFile( pcapPacket, tcp, udp, icmp, arp, http, frameColumnId,
-                ethernetColumnId, ipColumnId, transportColumnId, filtrColumnId,
+                ethernetColumnId, ipColumnId, transportColumnId, filtersColumnId,
                 tableView, vController, this
         ).invoke();
-
     }
-
-//    private void firstLayer(String packetCapture, int line, List<Frame> listFrame) {
-//        if (line > 0 && line < 7) {
-//            listFrame.add(new Frame(packetCapture.replaceFirst("Frame: *", "")));
-//
-//        } else
-//            listFrame.add(new Frame(""));
-//    }
-
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //--------------------  FILTERS PACKET   ---------------------------------------
