@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NumberPacketsController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NumberPacketsController">
    <children>
       <Pane layoutX="184.0" layoutY="36.0" prefHeight="733.0" prefWidth="961.0" style="-fx-background-color: #1a1a1a;">
          <children>
@@ -41,7 +41,7 @@
                               <Insets left="100.0" top="30.0" />
                            </HBox.margin>
                         </TextField>
-                        <Button fx:id="captureAttButton" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#action_captureAtt" prefHeight="40.0" prefWidth="164.0" text="LIVE">
+                        <Button fx:id="captureAttButton" maxHeight="40.0" maxWidth="200.0" mnemonicParsing="false" onAction="#action_captureAtt" prefHeight="40.0" prefWidth="164.0" text="NA ŻYWO">
                            <HBox.margin>
                               <Insets left="20.0" top="30.0" />
                            </HBox.margin>

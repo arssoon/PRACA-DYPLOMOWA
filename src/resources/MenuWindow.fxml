@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #20120F;" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
       <AnchorPane layoutX="725.0" layoutY="103.0" prefHeight="594.0" prefWidth="550.0" style="-fx-background-color: #9C2C22;" AnchorPane.rightAnchor="30.0">
          <children>
@@ -44,24 +44,24 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Pane layoutX="38.0" layoutY="40.0" prefHeight="726.0" prefWidth="657.0" style="-fx-background-color: #1a1a1a;" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="30.0">
+      <Pane layoutX="36.0" layoutY="50.0" prefHeight="751.0" prefWidth="614.0" style="-fx-background-color: #1a1a1a;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="50.0">
          <children>
-            <ImageView fitHeight="438.0" fitWidth="550.0" layoutX="54.0" opacity="0.13" pickOnBounds="true">
+            <ImageView fitHeight="644.0" fitWidth="494.0" layoutX="60.0" opacity="0.22" pickOnBounds="true">
                <image>
                   <Image url="@../images/background.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="262.0" prefHeight="176.0" prefWidth="481.0" text="Witam w programie CapturePackets" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="109.0" prefHeight="176.0" prefWidth="481.0" text="Witam w programie CapturePackets" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="53.0" />
                </font>
             </Label>
-            <Button fx:id="letsStartButton" layoutX="204.0" layoutY="580.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="46.0" prefWidth="292.0" style="-fx-background-radius: 100; -fx-background-color: #9C2C22;" text="Zaczynajmy" textFill="WHEAT">
+            <Button fx:id="letsStartButton" layoutX="186.0" layoutY="422.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="46.0" prefWidth="292.0" style="-fx-background-radius: 100; -fx-background-color: #9C2C22;" text="Zaczynajmy" textFill="WHEAT">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Label layoutX="118.0" layoutY="447.0" prefHeight="107.0" prefWidth="378.0" text="System do wizualizacji danych w sieci LAN. Przechwytywanie pakietów w zasięgu ręki." textFill="WHITE" wrapText="true">
+            <Label layoutX="91.0" layoutY="285.0" prefHeight="107.0" prefWidth="378.0" text="System do wizualizacji danych w sieci LAN. Przechwytywanie pakietów w zasięgu ręki." textFill="WHITE" wrapText="true">
                <font>
                   <Font size="22.0" />
                </font>

@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import org.jnetpcap.Pcap;
 import org.jnetpcap.PcapIf;
@@ -25,6 +26,7 @@ public class SelectDeviceController {
     MainController mainController;
     List<PcapIf> interfaceDevice;
     StringBuilder errbuf;
+    AnchorPane anchorPane;
     int number;
 
     @FXML

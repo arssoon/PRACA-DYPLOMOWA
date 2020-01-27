@@ -22,4 +22,10 @@
     -fx-background-color: transparent;
 }
 
+#anchorPane{
+    -fx-border-color: darkred;
+    -fx-border-width: 5;
+    -fx-background-color:  #20120F;
+}
+
 

@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectDeviceController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #20120F;" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectDeviceController">
    <children>
-      <Pane layoutX="184.0" layoutY="36.0" prefHeight="733.0" prefWidth="961.0" style="-fx-background-color: #1a1a1a;">
+      <Pane fx:id="pane" layoutX="184.0" layoutY="36.0" prefHeight="733.0" prefWidth="961.0" style="-fx-background-color: #1a1a1a;">
          <children>
             <VBox layoutX="131.0" layoutY="158.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #9C2C20;">
                <children>

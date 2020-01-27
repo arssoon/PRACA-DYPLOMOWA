@@ -11,6 +11,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import org.jnetpcap.PcapIf;
 
@@ -25,6 +26,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VisualisationController extends Component {
 
     MainController mainController;
+    AnchorPane anchorPane;
     StringBuilder errbuf;
     List<PcapIf> interfaceDevice;
     CaptureThread captureThread;
@@ -132,6 +134,7 @@ public class VisualisationController extends Component {
         statusText.clear();
         statusText.setPromptText(" ZATRZYMANO ");
         captureThread.interrupt();
+
 
     }
 

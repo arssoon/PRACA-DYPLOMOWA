@@ -86,9 +86,6 @@ public class CaptureThread extends Thread {
                     icmp = new Icmp();
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                     capturePackets(packet, tcp, udp, icmp, arp, http);
-                    if(packet.hasHeader(http) ){
-                        System.out.println(http);
-                    }
                     sleepThread();
                     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 }
@@ -114,21 +111,35 @@ public class CaptureThread extends Thread {
                     loadPacketsFromFile(pcapPacket, tcp, udp, icmp, arp, http);
                 }
                 // ----------------------  UDP  -----------------------------------------------------
-                else if (pcapPacket.hasHeader(udp)) {
+                else
+                    if (pcapPacket.hasHeader(udp)) {
                     checkPacketUdp = true;
                     savePacketsToFile(pcapPacket, tcp, udp, icmp, arp, http);
                     loadPacketsFromFile(pcapPacket, tcp, udp, icmp, arp, http);
+                }
+                if (pcapPacket.hasHeader(tcp)) {
+                    if ((tcp.source() == 53) || (tcp.destination() == 53)) {
+                        System.out.println(tcp);
+                    }
                 }
             }
             // ----------------------  Filtrowanie pakietow -----------------------------------------------------
             else {
                 packetFilter(pcapPacket, tcp, udp, http, arp, icmp);
                 //TODO usuń toooooooooooooo \/
-                if (pcapPacket.hasHeader(icmp)) {
-                    System.out.println("-------------klasa głowna---------------" + icmp);
-                }
-                if (pcapPacket.hasHeader(arp)) {
-                    System.out.println("-------------klasa głowna---------------" + arp);
+//                if (pcapPacket.hasHeader(icmp)) {
+//                    System.out.println("-------------klasa głowna---------------" + icmp);
+//                }
+//                if (pcapPacket.hasHeader(arp)) {
+//                    System.out.println("-------------klasa głowna---------------" + arp);
+//                }
+//                if(pcapPacket.hasHeader(http) ){
+//                    System.out.println(http);
+//                }
+                if (pcapPacket.hasHeader(tcp)) {
+                    if ((tcp.source() == 53) || (tcp.destination() == 53)) {
+                    System.out.println(tcp);
+                    }
                 }
 
             }
@@ -158,7 +169,7 @@ public class CaptureThread extends Thread {
         PrintStream out = new PrintStream(new FileOutputStream("PacketCapture.txt"));
         try {
             out.append(packetCapture);
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 15; i++) {
                 out.println(" ");
             }
         } catch (Exception e) {

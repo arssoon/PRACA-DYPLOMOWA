@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 import java.awt.event.ActionEvent;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import static org.jnetpcap.protocol.sigtran.SctpChunk.ABORT;
 
 public class MenuController {
+    AnchorPane anchorPane;
 
     @FXML
     public MainController mainController;

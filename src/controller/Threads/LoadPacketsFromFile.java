@@ -17,7 +17,6 @@ import org.jnetpcap.protocol.tcpip.Udp;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class LoadPacketsFromFile {
@@ -35,6 +34,7 @@ public class LoadPacketsFromFile {
     private TableColumn transportColumnId;
     private TableColumn filtersColumnId;
     private TableView tableView;
+    private int counterTranspotLayer;
 
     public LoadPacketsFromFile(PcapPacket pcapPacket, Tcp tcp, Udp udp, Icmp icmp, Arp arp, Http http, TableColumn frameColumnId,
                                TableColumn ethernetColumnId, TableColumn ipColumnId, TableColumn transportColumnId, TableColumn filtersColumnId,
@@ -59,13 +59,13 @@ public class LoadPacketsFromFile {
     public void invoke() {
         int line = 0;
         int counterIp = 0;
-        int counterTranspotLayer = 0;
+        counterTranspotLayer = 1;
 
-        List<Frame> listFrame = new ArrayList();
-        List<Ethernet> listEthernet = new ArrayList();
-        List<Ip> listIp = new ArrayList();
-        List<Transport> listTransport = new ArrayList();
-        List<Filters> listFilters = new ArrayList();
+        ObservableList<Frame> listFrame = FXCollections.observableArrayList();
+        ObservableList<Ethernet> listEthernet = FXCollections.observableArrayList();
+        ObservableList<Ip> listIp = FXCollections.observableArrayList();
+        ObservableList<Transport> listTransport = FXCollections.observableArrayList();
+        ObservableList<Filters> listFilters = FXCollections.observableArrayList();
 
         frameColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("frameName"));
         ethernetColumnId.setCellValueFactory(new PropertyValueFactory<Column, String>("ethernetName"));
@@ -88,7 +88,6 @@ public class LoadPacketsFromFile {
         String packetCapture;
         boolean ifIp6 = false;
         CaptureHigerLayers captureHigerLayers;
-        ObservableList<Column> contactList;
         BufferedReader in = new BufferedReader(new FileReader("PacketCapture.txt"));
 
         while ((packetCapture = in.readLine()) != null) {
@@ -104,30 +103,39 @@ public class LoadPacketsFromFile {
                 thirdLayer(packetCapture, line, listIp, listTransport, listFilters);
 
             } else {
-                captureHigerLayers = new CaptureHigerLayers(pcapPacket, tcp, udp, icmp, arp, http, packetCapture,  ifIp6, line,
-                        counterIp, counterTranspotLayer, listIp, listTransport, listFilters, captureThread, vController).invoke();
+                captureHigerLayers = new CaptureHigerLayers(pcapPacket, tcp, udp, icmp, packetCapture,  ifIp6, line,
+                        counterIp, listIp, listTransport, listFilters, captureThread, vController).invoke();
                 counterIp = captureHigerLayers.getCounterIp();
-                counterTranspotLayer = captureHigerLayers.getCounterTranspotLayer();
                 ifIp6 = captureHigerLayers.isIfIp6();
             }
 
             line++;
 
         }
+        if(vController.filtersGroup.getSelectedToggle() == vController.arpButton){
+            writePacketsToTable(counterIp, listFrame, listEthernet, listIp, listTransport, listFilters, 10, 10, 10);
+        } else {
+            writePacketsToTable(counterIp, listFrame, listEthernet, listIp, listTransport, listFilters, 19, 30, 51);
+        }
 
-        for (int j = 0; j < 19; j++) {
+        in.close();
+    }
+
+    private void writePacketsToTable(int counterIp, List<Frame> listFrame, List<Ethernet> listEthernet, List<Ip> listIp,
+                                     List<Transport> listTransport, List<Filters> listFilters, int max, int maxTransportLine, int maxFiltersLine) {
+        ObservableList<Column> contactList;
+        for (int j = 0; j < max; j++) {
             contactList = FXCollections.observableArrayList(
                     new Column(listFrame.get(j + 2).getFrameName(),
                             listEthernet.get(j + 9).getEthernetName(),
                             listIp.get(j + 19).getIpName(),
-                            listTransport.get(j + 30 + counterIp).getTransportName(),
-                            listFilters.get(j + 50 + counterIp).getFiltersName()
+                            listTransport.get(j + maxTransportLine + counterIp).getTransportName(),
+                            listFilters.get(j + maxFiltersLine + counterIp).getFiltersName()
                     )
             );
 
             tableView.getItems().addAll(contactList);
         }
-        in.close();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -136,7 +144,6 @@ public class LoadPacketsFromFile {
     private void thirdLayer(String packetCapture, int line, List<Ip> listIp, List<Transport> listTransport, List<Filters> listFilters) {
         if (line > 17 && line < 29) {
             listIp.add(new Ip(packetCapture.replaceFirst("Arp: *", "")));
-//            System.out.println(arp);
         } else {
             listIp.add(new Ip(""));
             listTransport.add(new Transport(""));
@@ -166,4 +173,5 @@ public class LoadPacketsFromFile {
         } else
             listFrame.add(new Frame(""));
     }
+
 }
