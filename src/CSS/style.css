@@ -1,4 +1,4 @@
-
+/*-----------------------------    TABLE    ----------------------------------------------------*/
 .table-view{
     -fx-background-color:  #20120F;
 }
@@ -22,10 +22,67 @@
     -fx-background-color: transparent;
 }
 
-#anchorPane{
-    -fx-border-color: darkred;
-    -fx-border-width: 5;
+/*-----------------------------    MENU - BUTTON   -------------------------------------------*/
+#startButton,
+#helpButton,
+#aboutButton,
+#exit {
+     -fx-background-color:  transparent;
+	 -fx-font-size: 50px;
+	 -fx-text-fill: white;
+	 -fx-font-weight: bold;
+     -fx-background-radius: 50; 
+}
+
+#startButton:hover,
+#helpButton:hover,
+#aboutButton:hover,
+#exit:hover {
+     -fx-background-color:  white;
+	 -fx-text-fill: darkred;
+	 -fx-font-size: 60px;
+	 -fx-padding: 8px 35px ;
+	 -fx-font-weight: bold ;
+     -fx-background-radius: 50; 
+     -fx-background-opacity: 0.8;
+}
+
+#letsStartButton {
+	-fx-background-radius: 100;
+	-fx-background-color:  transparent;
+	-fx-font-size: 30px;
+	-fx-text-fill: red;
+	-fx-border-color: darkred;
+	-fx-border-radius: 100;
+	-fx-border-width: 3;
+}
+#letsStartButton:hover {
+	-fx-background-radius: 100;
+	-fx-background-color:  darkred;
+	-fx-font-size: 30px;
+	-fx-text-fill: white;
+	-fx-font-weight: bold;
+	-fx-border-color: darkred;
+	-fx-border-radius: 100;
+	-fx-border-width: 3;
+
+	
+	}
+
+
+
+/*-----------------------------    ANCHORPANE    ----------------------------------------------------*/
+#anchorPane,
+#underButtonPane{
     -fx-background-color:  #20120F;
 }
 
+#backButton,
+#nextButton,
+#backToMenuButton {
+	-fx-background-color:  #F5DEB3;
+}
 
+#underPane {
+	-fx-background-color:   #9C2C20;
+}

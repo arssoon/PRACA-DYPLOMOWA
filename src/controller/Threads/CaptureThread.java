@@ -117,11 +117,6 @@ public class CaptureThread extends Thread {
                     savePacketsToFile(pcapPacket, tcp, udp, icmp, arp, http);
                     loadPacketsFromFile(pcapPacket, tcp, udp, icmp, arp, http);
                 }
-                if (pcapPacket.hasHeader(tcp)) {
-                    if ((tcp.source() == 53) || (tcp.destination() == 53)) {
-                        System.out.println(tcp);
-                    }
-                }
             }
             // ----------------------  Filtrowanie pakietow -----------------------------------------------------
             else {
@@ -130,18 +125,12 @@ public class CaptureThread extends Thread {
 //                if (pcapPacket.hasHeader(icmp)) {
 //                    System.out.println("-------------klasa głowna---------------" + icmp);
 //                }
-//                if (pcapPacket.hasHeader(arp)) {
-//                    System.out.println("-------------klasa głowna---------------" + arp);
-//                }
-//                if(pcapPacket.hasHeader(http) ){
-//                    System.out.println(http);
-//                }
-                if (pcapPacket.hasHeader(tcp)) {
-                    if ((tcp.source() == 53) || (tcp.destination() == 53)) {
-                    System.out.println(tcp);
-                    }
+                if (pcapPacket.hasHeader(arp)) {
+                    System.out.println("-------------klasa głowna---------------" + arp);
                 }
-
+                if(pcapPacket.hasHeader(http) ){
+                    System.out.println(http);
+                }
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();

@@ -19,12 +19,12 @@
                   <Font size="86.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="35.0" layoutY="667.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
+            <Button fx:id="backButton" layoutX="35.0" layoutY="667.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" text="&lt; WSTECZ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <VBox layoutX="131.0" layoutY="158.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #9C2C20;">
+            <VBox fx:id="underPane" layoutX="131.0" layoutY="158.0" prefHeight="450.0" prefWidth="700.0">
                <children>
                   <Label fx:id="aboutLabel" prefHeight="124.0" prefWidth="644.0" text="Wprowadź liczbę pakietów do przechwycenia lub wybierz przechwytywanie NA ŻYWO" textFill="#e8c796" wrapText="true">
                      <VBox.margin>
@@ -36,7 +36,9 @@
                   </Label>
                   <HBox prefHeight="88.0" prefWidth="600.0">
                      <children>
-                        <TextField fx:id="amountPacket" alignment="CENTER" maxWidth="300.0" onAction="#action_numberPacket" opacity="0.84" prefHeight="39.0" prefWidth="300.0" promptText="Wpisz ilość pakietów ...">
+                        <TextField fx:id="amountPacket" alignment="CENTER" maxWidth="300.0"
+                                   onAction="#action_numberPacket" opacity="0.84" prefHeight="39.0"
+                                   prefWidth="300.0" promptText="Wpisz ilość pakietów ...">
                            <HBox.margin>
                               <Insets left="100.0" top="30.0" />
                            </HBox.margin>
@@ -54,7 +56,7 @@
                         <Insets top="20.0" />
                      </VBox.margin>
                   </HBox>
-                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #F5DEB3;" text="DALEJ &gt;">
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" text="DALEJ &gt;">
                      <VBox.margin>
                         <Insets left="250.0" top="50.0" />
                      </VBox.margin>

@@ -26,6 +26,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class VisualisationController extends Component {
 
     MainController mainController;
+    @FXML
     AnchorPane anchorPane;
     StringBuilder errbuf;
     List<PcapIf> interfaceDevice;

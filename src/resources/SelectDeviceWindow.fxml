@@ -10,11 +10,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #20120F;" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectDeviceController">
+<AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SelectDeviceController">
    <children>
       <Pane fx:id="pane" layoutX="184.0" layoutY="36.0" prefHeight="733.0" prefWidth="961.0" style="-fx-background-color: #1a1a1a;">
          <children>
-            <VBox layoutX="131.0" layoutY="158.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #9C2C20;">
+            <VBox fx:id="underPane" layoutX="131.0" layoutY="158.0" prefHeight="450.0" prefWidth="700.0">
                <children>
                   <Label fx:id="aboutLabel" prefHeight="105.0" prefWidth="481.0" text="Wybierz urządzenie sieciowe do przechwytywania" textFill="#e8c796" wrapText="true">
                      <VBox.margin>
@@ -32,7 +32,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ComboBox>
-                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" style="-fx-background-color: #F5DEB3;" text="DALEJ &gt;">
+                  <Button fx:id="nextButton" mnemonicParsing="false" onAction="#action_nextWindow" prefHeight="47.0" prefWidth="185.0" text="DALEJ &gt;">
                      <VBox.margin>
                         <Insets left="250.0" top="65.0" />
                      </VBox.margin>
@@ -47,7 +47,7 @@
                   <Font size="86.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="35.0" layoutY="667.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
+            <Button fx:id="backButton" layoutX="35.0" layoutY="667.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" text="&lt; WSTECZ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

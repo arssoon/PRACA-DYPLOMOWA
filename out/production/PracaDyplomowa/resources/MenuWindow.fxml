@@ -10,33 +10,28 @@
 
 <AnchorPane fx:id="anchorPane" prefHeight="800.0" prefWidth="1300.0" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MenuController">
    <children>
-      <AnchorPane layoutX="725.0" layoutY="103.0" prefHeight="594.0" prefWidth="550.0" style="-fx-background-color: #9C2C22;" AnchorPane.rightAnchor="30.0">
+      <AnchorPane fx:id="underButtonPane" layoutX="784.0" layoutY="138.0" prefHeight="525.0" prefWidth="481.0" style="-fx-background-color: #9C2C20;" AnchorPane.rightAnchor="35.0">
          <children>
-            <Button fx:id="startButton" layoutX="105.0" layoutY="163.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="70.0" prefWidth="350.0" style="-fx-background-color: #E45652; -fx-background-radius: 50;" text="START" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="startButton" layoutX="41.0" layoutY="25.0" mnemonicParsing="false" onAction="#openCapturePackets" opacity="0.8" prefHeight="50.0" prefWidth="400.0" text="START" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold" size="38.0" />
+                  <Font name="Times New Roman Bold" size="33.0" />
                </font>
             </Button>
-            <Button fx:id="helpButton" layoutX="80.0" layoutY="265.0" mnemonicParsing="false" onAction="#openHelp" prefHeight="70.0" prefWidth="400.0" style="-fx-background-color: #E45652; -fx-background-radius: 50;" text="POMOC" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="helpButton" layoutX="41.0" layoutY="150.0" mnemonicParsing="false" onAction="#openHelp" opacity="0.8" prefHeight="50.0" prefWidth="400.0" text="POMOC" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
-                  <Font name="Times New Roman Bold" size="38.0" />
+                  <Font name="Times New Roman Bold" size="33.0" />
                </font>
             </Button>
-            <Button fx:id="exit" layoutX="27.0" layoutY="480.0" mnemonicParsing="false" onAction="#openExit" prefHeight="70.0" prefWidth="500.0" style="-fx-background-color: #E45652; -fx-background-radius: 50;" text="WYJŚCIE" textFill="WHITE">
+            <Button fx:id="exit" layoutX="41.0" layoutY="402.0" mnemonicParsing="false" onAction="#openExit" opacity="0.8" prefHeight="50.0" prefWidth="400.0" text="WYJŚCIE" textFill="WHITE">
                <font>
-                  <Font name="Times New Roman Bold" size="38.0" />
+                  <Font name="Times New Roman Bold" size="33.0" />
                </font>
             </Button>
-            <Button fx:id="aboutButton" layoutX="50.0" layoutY="370.0" mnemonicParsing="false" onAction="#openAbout" prefHeight="70.0" prefWidth="450.0" style="-fx-background-color: #E45652; -fx-background-radius: 50;" text="O MNIE" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
+            <Button fx:id="aboutButton" layoutX="41.0" layoutY="275.0" mnemonicParsing="false" onAction="#openAbout" opacity="0.8" prefHeight="50.0" prefWidth="400.0" text="O MNIE" textAlignment="CENTER" textFill="WHITE" textOverrun="CENTER_ELLIPSIS">
                <font>
-                  <Font name="Times New Roman Bold" size="38.0" />
+                  <Font name="Times New Roman Bold" size="33.0" />
                </font>
             </Button>
-            <Label alignment="CENTER" layoutX="41.0" layoutY="30.0" prefHeight="75.0" prefWidth="481.0" text="CAPTURE PACKETS" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="52.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <Label fx:id="closeLabel" layoutX="1265.0" layoutY="7.0" onMouseClicked="#handleClose" prefHeight="8.0" prefWidth="7.0" text="X" textFill="#b53131">
@@ -44,24 +39,25 @@
             <Font name="System Bold" size="29.0" />
          </font>
       </Label>
-      <Pane layoutX="36.0" layoutY="50.0" prefHeight="751.0" prefWidth="614.0" style="-fx-background-color: #1a1a1a;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="50.0">
+      <Pane layoutX="36.0" layoutY="50.0" prefHeight="751.0" prefWidth="614.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 1;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="550.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="644.0" fitWidth="494.0" layoutX="60.0" opacity="0.22" pickOnBounds="true">
+            <ImageView fitHeight="800.0" fitWidth="750.0" opacity="0.25" pickOnBounds="true">
                <image>
                   <Image url="@../images/background.jpg" />
                </image>
             </ImageView>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="73.0" layoutY="109.0" prefHeight="176.0" prefWidth="481.0" text="Witam w programie CapturePackets" textFill="WHITE" wrapText="true">
+            <Pane layoutX="103.0" layoutY="133.0" opacity="0.55" prefHeight="495.0" prefWidth="545.0" style="-fx-background-color: #222222;" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="135.0" layoutY="151.0" prefHeight="176.0" prefWidth="481.0" text="Witam w programie CapturePackets" textFill="WHITE" wrapText="true">
                <font>
                   <Font size="53.0" />
                </font>
             </Label>
-            <Button fx:id="letsStartButton" layoutX="186.0" layoutY="422.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="46.0" prefWidth="292.0" style="-fx-background-radius: 100; -fx-background-color: #9C2C22;" text="Zaczynajmy" textFill="WHEAT">
+            <Button fx:id="letsStartButton" layoutX="159.0" layoutY="484.0" mnemonicParsing="false" onAction="#openCapturePackets" prefHeight="46.0" prefWidth="400.0" text="ZACZYNAJMY..." textFill="WHEAT">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Label layoutX="91.0" layoutY="285.0" prefHeight="107.0" prefWidth="378.0" text="System do wizualizacji danych w sieci LAN. Przechwytywanie pakietów w zasięgu ręki." textFill="WHITE" wrapText="true">
+            <Label layoutX="153.0" layoutY="327.0" prefHeight="107.0" prefWidth="378.0" text="System do wizualizacji danych w sieci LAN. Przechwytywanie pakietów w zasięgu ręki." textFill="WHITE" wrapText="true">
                <font>
                   <Font size="22.0" />
                </font>

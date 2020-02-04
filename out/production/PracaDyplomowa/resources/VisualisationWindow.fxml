@@ -11,9 +11,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VisualisationController">
+<AnchorPane fx:id="anchorPane" stylesheets="@../CSS/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.VisualisationController">
    <children>
-      <Pane prefHeight="800.0" prefWidth="1300.0">
+      <Pane prefHeight="800.0" prefWidth="1300.0" stylesheets="@../CSS/style.css">
          <children>
             <Button fx:id="startCaptureButton" layoutX="47.0" layoutY="139.0" mnemonicParsing="false" onAction="#action_StartCapturePacket" prefHeight="95.0" prefWidth="144.0" style="-fx-background-color: #E45652;" text="START" textFill="WHITE">
                <font>
@@ -28,7 +28,7 @@
                   <Font name="System Bold" size="29.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="35.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToPreviousWindow" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
+            <Button fx:id="backButton" layoutX="35.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToPreviousWindow" prefHeight="44.0" prefWidth="132.0" text="&lt; WSTECZ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -76,7 +76,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </ToggleButton>
-            <Button fx:id="backToMenuButton" layoutX="1137.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="MENU">
+            <Button fx:id="backToMenuButton" layoutX="1137.0" layoutY="742.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" text="MENU">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

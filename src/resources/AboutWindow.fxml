@@ -17,7 +17,7 @@
       </Label>
       <Pane layoutX="184.0" layoutY="36.0" prefHeight="733.0" prefWidth="961.0" style="-fx-background-color: #1a1a1a;">
          <children>
-            <VBox layoutX="181.0" layoutY="167.0" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #9C2C20;">
+            <VBox fx:id="underPane" layoutX="181.0" layoutY="167.0" prefHeight="400.0" prefWidth="600.0">
                <children>
                   <Label fx:id="aboutLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="354.0" prefWidth="600.0" textFill="WHITE">
                      <VBox.margin>
@@ -34,7 +34,7 @@
                   <Font size="86.0" />
                </font>
             </Label>
-            <Button fx:id="backButton" layoutX="35.0" layoutY="667.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" style="-fx-background-color: #F5DEB3;" text="&lt; WSTECZ">
+            <Button fx:id="backButton" layoutX="35.0" layoutY="667.0" mnemonicParsing="false" onAction="#action_backToMenu" prefHeight="44.0" prefWidth="132.0" text="&lt; WSTECZ">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>

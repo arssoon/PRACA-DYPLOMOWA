@@ -126,7 +126,7 @@ public class CaptureHigerLayers {
                     transportLayer(pcapPacket, tcp, udp, icmp, packetCapture);
                 } else {
                     listTransport.add(new Transport(""));
-                        listFilters.add(new Filters(""));
+//                        listFilters.add(new Filters(""));
                 }
             } else if (captureThread.checkPacketUdp && ifIp6) {
                 //--------------------   UDP  ---------------------------------------
@@ -134,7 +134,7 @@ public class CaptureHigerLayers {
                     transportLayer(pcapPacket, tcp, udp, icmp, packetCapture);
                 } else {
                     listTransport.add(new Transport(""));
-                        listFilters.add(new Filters(""));
+//                        listFilters.add(new Filters(""));
                 }
             }
         }

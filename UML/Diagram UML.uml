@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="395.8582713293651" y="418.0">controller.VisualisationController</node>
+    <node x="457.4089285714286" y="107.0">controller.Threads.CaptureHigerLayers</node>
+    <node x="570.3200396825397" y="0.0">controller.TableViewColumn.Transport</node>
+    <node x="430.3582713293651" y="341.0">controller.Threads.CaptureThread</node>
+    <node x="332.4089285714286" y="107.0">controller.TableViewColumn.Column</node>
+    <node x="350.5403893849207" y="806.0">controller.MainController</node>
+    <node x="122.40892857142859" y="107.0">controller.TableViewColumn.Frame</node>
+    <node x="399.5" y="572.0">controller.HelpController</node>
+    <node x="347.8582713293651" y="264.0">controller.Threads.LoadPacketsFromFile</node>
+    <node x="498.3200396825397" y="0.0">controller.TableViewColumn.Ip</node>
+    <node x="419.07142857142856" y="495.0">controller.NumberPacketsController</node>
+    <node x="390.3200396825397" y="0.0">controller.TableViewColumn.Filters</node>
+    <node x="10.5" y="572.0">controller.AboutController</node>
+    <node x="386.5403893849207" y="883.0">fx.Main</node>
+    <node x="179.5" y="572.0">controller.SelectDeviceController</node>
+    <node x="300.75" y="659.0">controller.MenuController</node>
+    <node x="217.4089285714286" y="107.0">controller.TableViewColumn.Ethernet</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="controller.Threads.CaptureThread" target="controller.VisualisationController">
+      <point x="49.125" y="13.5" />
+      <point x="544.983271329365" y="398.0" />
+      <point x="538.170771329365" y="398.0" />
+      <point x="38.8125" y="-13.5" />
+    </edge>
+    <edge source="controller.MainController" target="controller.SelectDeviceController">
+      <point x="-35.5" y="-13.5" />
+      <point x="386.0403893849207" y="756.0" />
+      <point x="268.4642857142857" y="756.0" />
+      <point x="268.4642857142857" y="639.0" />
+      <point x="204.5" y="639.0" />
+      <point x="-75.0" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.TableViewColumn.Ip">
+      <point x="31.071428571428584" y="-13.5" />
+      <point x="465.92969990079365" y="154.0" />
+      <point x="446.9089285714286" y="154.0" />
+      <point x="446.9089285714286" y="87.0" />
+      <point x="513.9200396825397" y="87.0" />
+      <point x="-10.399999999999977" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.VisualisationController">
+      <point x="-34.80000000000001" y="13.5" />
+      <point x="400.0582713293651" y="311.0" />
+      <point x="419.8582713293651" y="311.0" />
+      <point x="419.8582713293651" y="398.0" />
+      <point x="434.6707713293651" y="398.0" />
+      <point x="-64.6875" y="-13.5" />
+    </edge>
+    <edge source="controller.MenuController" target="controller.MainController">
+      <point x="0.0" y="13.5" />
+      <point x="371.75" y="716.0" />
+      <point x="426.6118179563492" y="716.0" />
+      <point x="5.071428571428555" y="-13.5" />
+    </edge>
+    <edge source="controller.Threads.CaptureHigerLayers" target="controller.TableViewColumn.Ip">
+      <point x="-18.555555555555543" y="-13.5" />
+      <point x="522.353373015873" y="87.0" />
+      <point x="524.3200396825397" y="87.0" />
+      <point x="0.0" y="13.5" />
+    </edge>
+    <edge source="controller.MenuController" target="controller.HelpController">
+      <point x="47.33333333333337" y="-13.5" />
+      <point x="419.08333333333337" y="639.0" />
+      <point x="423.16666666666674" y="639.0" />
+      <point x="-47.333333333333314" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.Threads.CaptureThread">
+      <point x="34.80000000000001" y="13.5" />
+      <point x="-26.19999999999999" y="-13.5" />
+    </edge>
+    <edge source="controller.MenuController" target="controller.AboutController">
+      <point x="-47.33333333333337" y="-13.5" />
+      <point x="324.41666666666663" y="619.0" />
+      <point x="134.66666666666663" y="619.0" />
+      <point x="49.66666666666663" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.CaptureHigerLayers" target="controller.Threads.CaptureThread">
+      <point x="13.916666666666629" y="13.5" />
+      <point x="554.8255952380952" y="214.0" />
+      <point x="631.0577380952382" y="214.0" />
+      <point x="631.0577380952382" y="321.0" />
+      <point x="548.258271329365" y="321.0" />
+      <point x="52.39999999999998" y="-13.5" />
+    </edge>
+    <edge source="controller.VisualisationController" target="controller.Threads.CaptureThread">
+      <point x="-12.9375" y="-13.5" />
+      <point x="486.4207713293651" y="398.0" />
+      <point x="479.4832713293651" y="398.0" />
+      <point x="-16.375" y="13.5" />
+    </edge>
+    <edge source="controller.MainController" target="controller.MenuController">
+      <point x="-5.071428571428612" y="-13.5" />
+      <point x="416.4689608134921" y="726.0" />
+      <point x="324.4166666666667" y="726.0" />
+      <point x="-47.333333333333314" y="13.5" />
+    </edge>
+    <edge source="controller.VisualisationController" target="controller.MainController">
+      <point x="77.62500000000001" y="13.5" />
+      <point x="576.9832713293652" y="465.0" />
+      <point x="636.5714285714286" y="465.0" />
+      <point x="636.5714285714286" y="786.0" />
+      <point x="487.4689608134921" y="786.0" />
+      <point x="65.92857142857144" y="-13.5" />
+    </edge>
+    <edge source="controller.Threads.CaptureThread" target="controller.Threads.LoadPacketsFromFile">
+      <point x="-52.400000000000006" y="-13.5" />
+      <point x="443.45827132936506" y="321.0" />
+      <point x="434.8582713293651" y="321.0" />
+      <point x="0.0" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.TableViewColumn.Transport">
+      <point x="80.78571428571428" y="-13.5" />
+      <point x="515.6439856150794" y="244.0" />
+      <point x="657.1089285714286" y="244.0" />
+      <point x="657.1089285714286" y="87.0" />
+      <point x="662.1200396825398" y="87.0" />
+      <point x="40.80000000000001" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.CaptureHigerLayers" target="controller.VisualisationController">
+      <point x="41.750000000000014" y="13.5" />
+      <point x="582.6589285714285" y="204.0" />
+      <point x="648.3577380952381" y="204.0" />
+      <point x="648.3577380952381" y="388.0" />
+      <point x="564.045771329365" y="388.0" />
+      <point x="64.6875" y="-13.5" />
+    </edge>
+    <edge source="controller.SelectDeviceController" target="controller.MainController">
+      <point x="-25.0" y="13.5" />
+      <point x="254.5" y="629.0" />
+      <point x="278.6071428571429" y="629.0" />
+      <point x="278.6071428571429" y="746.0" />
+      <point x="396.1832465277779" y="746.0" />
+      <point x="-25.357142857142833" y="-13.5" />
+    </edge>
+    <edge source="controller.SelectDeviceController" target="controller.NumberPacketsController">
+      <point x="0.0" y="-13.5" />
+      <point x="279.5" y="547.0" />
+      <point x="453.57142857142856" y="547.0" />
+      <point x="-69.0" y="13.5" />
+    </edge>
+    <edge source="controller.NumberPacketsController" target="controller.VisualisationController">
+      <point x="-51.75" y="-13.5" />
+      <point x="470.82142857142856" y="475.0" />
+      <point x="473.4832713293651" y="475.0" />
+      <point x="-25.875" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.TableViewColumn.Column">
+      <point x="-18.64285714285714" y="-13.5" />
+      <point x="416.2154141865079" y="194.0" />
+      <point x="352.6589285714286" y="194.0" />
+      <point x="-20.25" y="13.5" />
+    </edge>
+    <edge source="controller.AboutController" target="controller.MainController">
+      <point x="0.0" y="13.5" />
+      <point x="85.0" y="766.0" />
+      <point x="375.89753224206356" y="766.0" />
+      <point x="-45.64285714285717" y="-13.5" />
+    </edge>
+    <edge source="controller.Threads.CaptureHigerLayers" target="controller.TableViewColumn.Filters">
+      <point x="-55.666666666666686" y="-13.5" />
+      <point x="485.2422619047619" y="57.0" />
+      <point x="451.9200396825397" y="57.0" />
+      <point x="17.599999999999994" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.Threads.CaptureHigerLayers">
+      <point x="55.928571428571445" y="-13.5" />
+      <point x="490.78684275793654" y="224.0" />
+      <point x="499.1589285714286" y="224.0" />
+      <point x="-41.75" y="13.5" />
+    </edge>
+    <edge source="fx.Main" target="controller.MainController">
+      <point x="0.0" y="-13.5" />
+      <point x="0.0" y="13.5" />
+    </edge>
+    <edge source="controller.VisualisationController" target="controller.NumberPacketsController">
+      <point x="25.875" y="13.5" />
+      <point x="525.233271329365" y="475.0" />
+      <point x="574.3214285714286" y="475.0" />
+      <point x="51.75" y="-13.5" />
+    </edge>
+    <edge source="controller.MenuController" target="controller.SelectDeviceController">
+      <point x="0.0" y="-13.5" />
+      <point x="371.75" y="639.0" />
+      <point x="354.5" y="639.0" />
+      <point x="75.0" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.TableViewColumn.Frame">
+      <point x="-68.35714285714283" y="-13.5" />
+      <point x="366.50112847222226" y="234.0" />
+      <point x="177.9089285714286" y="234.0" />
+      <point x="18.5" y="13.5" />
+    </edge>
+    <edge source="controller.HelpController" target="controller.MainController">
+      <point x="47.333333333333314" y="13.5" />
+      <point x="517.8333333333334" y="639.0" />
+      <point x="529.8452380952381" y="639.0" />
+      <point x="529.8452380952381" y="756.0" />
+      <point x="457.0403893849207" y="756.0" />
+      <point x="35.5" y="-13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.TableViewColumn.Filters">
+      <point x="-55.928571428571416" y="-13.5" />
+      <point x="378.92969990079365" y="224.0" />
+      <point x="206.9089285714286" y="224.0" />
+      <point x="206.9089285714286" y="87.0" />
+      <point x="399.1200396825397" y="87.0" />
+      <point x="-35.20000000000002" y="13.5" />
+    </edge>
+    <edge source="controller.NumberPacketsController" target="controller.MainController">
+      <point x="69.0" y="13.5" />
+      <point x="591.5714285714286" y="547.0" />
+      <point x="609.0" y="547.0" />
+      <point x="609.0" y="776.0" />
+      <point x="477.326103670635" y="776.0" />
+      <point x="55.78571428571428" y="-13.5" />
+    </edge>
+    <edge source="controller.Threads.CaptureHigerLayers" target="controller.TableViewColumn.Transport">
+      <point x="37.111111111111086" y="-13.5" />
+      <point x="578.0200396825396" y="87.0" />
+      <point x="580.5200396825396" y="87.0" />
+      <point x="-40.80000000000001" y="13.5" />
+    </edge>
+    <edge source="controller.Threads.LoadPacketsFromFile" target="controller.TableViewColumn.Ethernet">
+      <point x="-43.5" y="-13.5" />
+      <point x="391.3582713293651" y="214.0" />
+      <point x="241.1589285714286" y="214.0" />
+      <point x="-23.75" y="13.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6023550724637681" x="775.0" y="234.003007518797" />
+  <SelectedNodes>
+    <node>controller.NumberPacketsController</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -26,6 +26,7 @@ public class SelectDeviceController {
     MainController mainController;
     List<PcapIf> interfaceDevice;
     StringBuilder errbuf;
+    @FXML
     AnchorPane anchorPane;
     int number;
 
@@ -49,7 +50,7 @@ public class SelectDeviceController {
             throw new IllegalStateException(errbuf.toString());
         }
 
-        for(int i=0; i < interfaceDevice.size(); i++){
+        for(int i=0; i < 1; i++){
             networkName = FXCollections.observableArrayList(
                     "#" + i + " : " + interfaceDevice.get(i).getName() + " >>>> " +
                             interfaceDevice.get(i).getDescription()
